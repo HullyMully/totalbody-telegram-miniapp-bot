@@ -72,6 +72,7 @@ html, body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
   margin: 0;
   padding: 0;
   background-color: #f0e6da;
@@ -80,7 +81,6 @@ html, body {
 
 .app {
   min-height: 100vh;
-  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -94,7 +94,6 @@ html, body {
 
 .app, .div {
   min-height: 100vh;
-  overflow-x: hidden;
   outline: 2px solid red; /* временно для отладки */
 }
 
