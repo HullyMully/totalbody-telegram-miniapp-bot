@@ -69,8 +69,8 @@
 }
 
 body {
-  width: 100lvh;
-  max-width: 100lvh;
+  width: 100vw;
+  max-width: 100vw;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -79,17 +79,15 @@ body {
 
 .app {
   background-color: transparent;
-  width: 100lvh;
-  max-width: 100lvh;
+  width: 100vw;
+  max-width: 100vw;
   margin: 0;
   padding: 0;
-  /* display: flex; flex-direction: row; justify-content: center; overflow: hidden; */
 }
 
 .app .div {
-  width: 100lvh;
-  max-width: 100lvh;
-  /* overflow: hidden; */
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .app .overlap-group {
@@ -107,7 +105,6 @@ body {
   height: auto;
   top: 0;
   left: 0;
-  /* overflow: hidden; */
 }
 
 .app .vector {
