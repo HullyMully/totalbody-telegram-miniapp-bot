@@ -82,6 +82,7 @@ html, body {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  /* height и overflow-y не задаём! */
 }
 
 .app .div {
