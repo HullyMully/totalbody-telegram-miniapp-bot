@@ -78,11 +78,24 @@ html, body {
   box-sizing: border-box;
 }
 
-.app, .div, .overlap-group {
+.app {
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.div, .overlap-group {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  /* height и overflow-y не задаём! */
+  /* height и overflow не задаём! */
+}
+
+.app, .div {
+  min-height: 100vh;
+  overflow-x: hidden;
+  outline: 2px solid red; /* временно для отладки */
 }
 
 .app .div {
@@ -1330,7 +1343,7 @@ html, body {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
@@ -2208,7 +2221,7 @@ html, body {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    overflow-y: visible; /* Оставляем visible */
+    overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
@@ -2268,7 +2281,7 @@ html, body {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    overflow-y: visible; /* Оставляем visible для тени */
+    overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
@@ -2343,6 +2356,7 @@ html, body {
   left: 0;
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
