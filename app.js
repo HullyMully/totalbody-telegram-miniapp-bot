@@ -708,19 +708,19 @@ function handleSocialClick(event) {
         button.classList.contains('logos-telegram-2') || 
         button.classList.contains('logos-telegram-3') || 
         button.classList.contains('logos-telegram-5')) {
-        url = 'https://t.me/totalbody_love';
+        url = 'https://t.me/TotalBodyVernadskogo';
     } 
     // Проверяем все возможные классы для WhatsApp
     else if (button.classList.contains('logos-whatsapp-icon') || 
              button.classList.contains('logos-whatsapp-icon-2') || 
              button.classList.contains('logos-whatsapp-icon-3') || 
              button.classList.contains('logos-whatsapp-icon-4')) {
-        url = 'https://wa.me/79522559000';
+        url = 'https://wa.me/89150640309';
     } 
     // Проверяем ВКонтакте (иконка или текст)
     else if (button.classList.contains('vector-11') || 
              button.closest('.overlap-9')) {
-        url = 'https://vk.com/totalbody';
+        url = 'https://vk.ru/total_body_msk_vernadskogo';
     }
     
     if (url) {

@@ -68,63 +68,49 @@
     font-style: italic;
 }
 
-body{
-  width: 407px;
+body {
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #f0e6da;
 }
 
 .app {
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .app .div, .app .overlap, .app .overlap-group, .app .frame, .app .overlap-2, .app .overlap-wrapper, .app .overlap-3, .app .overlap-group-wrapper, .app .overlap-4, .app .overlap-5, .app .overlap-6, .app .overlap-7, .app .overlap-8, .app .overlap-9, .app .overlap-10, .app .overlap-11, .app .overlap-12, .app .overlap-13, .app .overlap-14, .app .overlap-15, .app .overlap-16, .app .overlap-17, .app .overlap-18, .app .overlap-19, .app .overlap-20, .app .overlap-21, .app .overlap-22, .app .overlap-23, .app .overlap-24, .app .overlap-25, .app .overlap-26, .app .overlap-27, .app .overlap-28, .app .overlap-29, .app .overlap-30 {
-    overflow: hidden;
-  }
-  
-  .app .div {
+  background-color: transparent;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  /* display: flex; flex-direction: row; justify-content: center; overflow: hidden; */
+}
 
-  }
-  
-  .app .overlap {
-    position: absolute;
-    width: 1451px;
-    height: 6419px;
-    top: 0;
-    left: 0;
-  }
-  
-  .app .overlap-group {
-    position: absolute;
-    width: 407px;
-    height: 6419px;
-    top: 0;
-    left: 0;
-  }
-  
-  .app .frame {
-    width: 100%; /* было 375px */
-    max-width: 414px; /* ограничиваем максимальную ширину для больших телефонов */
-    height: 6419px; /* высота подстраивается под содержимое */
-    margin: 0; /* центрирование */
-    background-color: #f0e6da;
-    overflow: hidden;
-  }
-  
-  .app .overlap-2 {
-    position: absolute;
-    width: 408px;
-    height: 5500px; /* Немного увеличил высоту */
-    top: -7px;
-    left: 0;
-    overflow: hidden; /* Оставляем hidden у родителя */
-  }
-  
-  .app .vector {
+.app .div {
+  width: 100%;
+  max-width: 100vw;
+  /* overflow: hidden; */
+}
+
+.app .overlap-group {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  background-color: #f0e6da;
+}
+
+.app .overlap-2 {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: auto;
+  top: 0;
+  left: 0;
+  /* overflow: hidden; */
+}
+
+.app .vector {
     position: absolute;
     width: 107px;
     height: 230px;
@@ -133,19 +119,19 @@ body{
   }
   
   .app .img {
-    position: absolute;
     width: 100%;
-    height: 176px;
-    top: 7px;
-    left: 0;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    position: static;
   }
   
   .app .erasebg-transformed {
     position: absolute;
-    width: 100%;
-    height: 663px;
     top: 66px;
     left: 0;
+    width: 100%;
+    height: 663px;
     object-fit: cover;
   }
   
@@ -199,7 +185,7 @@ body{
   
   .app .frame-2 {
     position: absolute;
-    height: 303px;
+    width: 100%;
     top: 564px;
     left: 0;
   }
@@ -226,7 +212,7 @@ body{
     width: 83%;
     height: auto;
     top: 652px;
-    left: 5%;
+    left: 8%;
     background-color: #ffffff;
     border-radius: 30px;
     overflow: hidden;
@@ -521,7 +507,7 @@ body{
   
   .app .frame-4 {
     top: 3184px;
-    left: 5%;
+    left: 8%;
     position: absolute;
     width: 340px;
     height: 415px;
@@ -928,7 +914,6 @@ body{
     position: absolute;
     width: 124px;
     height: 50px;
-    top: 7px;
     left: 70%;
   }
   
@@ -1763,7 +1748,6 @@ body{
     width: 100%;
     height: 121px;
     top: 1622px;
-    left: 20px;
   }
   
   .app .vector-16 {
@@ -2238,7 +2222,7 @@ body{
     -ms-overflow-style: none;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding: 0 20px 30px 20px;
+    padding: 0 50px 30px 20px;
     box-sizing: border-box;
     align-items: center;
     z-index: 1; /* Устанавливаем z-index */
@@ -2298,7 +2282,7 @@ body{
     -ms-overflow-style: none;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding: 0 20px 30px 20px; /* Отступы слева, снизу (для тени) и справа */
+    padding: 0 50px 30px 20px; /* Отступы слева, снизу (для тени) и справа */
     box-sizing: border-box;
     align-items: center;
     z-index: 1; /* Устанавливаем z-index */
@@ -2386,7 +2370,6 @@ body{
 .app .frame-15,
 .app .frame-16 {
   flex: 0 0 auto;
-  width: 300px;
   margin-right: 20px;
   scroll-snap-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
