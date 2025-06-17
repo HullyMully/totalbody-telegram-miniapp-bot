@@ -88,19 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Анна",
             text: "Очень понравилось! Тренеры внимательные, атмосфера супер. Уже после первой тренировки почувствовала результат.",
             rating: 5,
-            avatar: "https://res.cloudinary.com/dj05yedo3/image/upload/v1749661522/eco6udbgx8vnfq8rwimr.png",
+            avatar: "https://res.cloudinary.com/dd58ooqcc/image/upload/v1749830140/portrait-young-woman-with-natural-make-up_23-2149084942-round_5_lausb7.png",
         },
         {
-            name: "Андрей",
+            name: "Екатерина",
             text: "Профессиональные тренеры, индивидуальный подход. Результат заметен уже через месяц.",
             rating: 4.8,
-            avatar: "https://res.cloudinary.com/dj05yedo3/image/upload/v1749661522/eh6ypsvgurg5aisowomq.png",
+            avatar: "https://res.cloudinary.com/dd58ooqcc/image/upload/v1749830163/smailik-zensina-na-otkrytom-vozduhe-v-gorode-round_1_h8a4pn.png",
         },
         {
-            name: "Владимир",
+            name: "Виктория",
             text: "Очень уютная студия, современное оборудование, дружелюбная атмосфера.",
             rating: 5,
-            avatar: "https://res.cloudinary.com/dj05yedo3/image/upload/v1749661523/gj70ct4y1uuezrjbrdua.png",
+            avatar: "https://res.cloudinary.com/dd58ooqcc/image/upload/v1749830714/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2025-06-13_%D0%B2_10.03.14_PM-round_1_s0741y.png",
         },
     ];
 
@@ -360,60 +360,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Модальное окно Наши цены ---
     const prices = [
         {
-            title: "Лайт",
-            features: [
-                "8 занятий",
-                "30 дней",
-                "6 дней заморозки",
-                "1 гостевой визит"
-            ],
-            cost: "9600 руб."
+            title: 'Пробное занятие',
+            price: '500 ₽',
+            description: 'На любое направление',
+            features: []
         },
         {
-            title: "Стандарт",
+            title: 'Абонемент «Лайт»',
+            price: '9 600 ₽',
+            description: '8 занятий',
             features: [
-                "12 занятий",
-                "45 дней",
-                "10 дней заморозки",
-                "2 гостевых визита",
-                "Доступ к онлайн-библиотеке"
-            ],
-            cost: "14400 руб."
+                'По 1 200 ₽ за занятие',
+                'Действует 30 дней',
+                'Заморозка 6 дней',
+                '1 гостевой визит'
+            ]
         },
         {
-            title: "Премиум",
+            title: 'Абонемент «Медиум»',
+            price: '13 440 ₽',
+            description: '12 занятий',
             features: [
-                "16 занятий",
-                "60 дней",
-                "15 дней заморозки",
-                "3 гостевых визита",
-                "Индивидуальная тренировка",
-                "Консультация нутрициолога"
-            ],
-            cost: "19200 руб."
+                'По 1 120 ₽ за занятие',
+                'Действует 45 дней',
+                'Заморозка 6 дней',
+                '2 гостевых визита'
+            ]
         },
         {
-            title: "Безлимит",
+            title: 'Абонемент «Хард»',
+            price: '17 400 ₽',
+            description: '16 занятий',
             features: [
-                "Неограниченное количество занятий",
-                "90 дней",
-                "20 дней заморозки",
-                "Безлимитные гостевые визиты",
-                "Индивидуальный план тренировок",
-                "Полный доступ к онлайн-ресурсам",
-                "Приоритетная запись"
-            ],
-            cost: "28800 руб."
+                'По 1 088 ₽ за занятие',
+                'Действует 60 дней',
+                'Заморозка 9 дней',
+                '2 гостевых визита'
+            ]
         },
         {
-            title: "Новый тариф",
+            title: 'Абонемент «Хард ПРО»',
+            price: '24 960 ₽',
+            description: '24 занятия',
             features: [
-                "1 занятий",
-                "1 дней",
-                "1 дней заморозки",
-                "1 гостевых визитов"
-            ],
-            cost: "1000 руб."
+                'По 1 040 ₽ за занятие',
+                'Действует 90 дней',
+                'Заморозка 15 дней',
+                '3 гостевых визита'
+            ]
         }
     ];
 
@@ -425,38 +419,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const pricesNext = document.querySelector('.prices-next');
     let currentPriceBlock = 0;
 
-    function renderPriceBlock(idx) {
+    function renderPrice(idx) {
         pricesSlider.innerHTML = ''; // Очищаем слайдер перед добавлением нового блока
         const price = prices[idx];
-        if (!price) {
-            // Этого не должно происходить после исправления логики индексации,
-            // но оставляем на случай непредвиденных ошибок.
-            console.error("Ошибка: Объект цены undefined или null для индекса:", idx);
-            return; 
-        }
         const block = document.createElement('div');
         block.className = 'price-block';
         block.innerHTML = `
             <div class="price-title">${price.title}</div>
-            <ul class="price-features-list">
-                ${price.features.map(feature => `<li class="price-feature-item">${feature}</li>`).join('')}
-            </ul>
+            <div class="price-description">${price.description}</div>
             <div class="price-cost-wrap">
-                <div class="price-cost-label">Стоимость</div>
-                <div class="price-cost-value">${price.cost}</div>
+                <div class="price-cost-value">${price.price}</div>
             </div>
-            <button class="signup-trial-button" data-training-type="Пробное занятие">Записаться на пробное занятие</button>
+            ${price.features.length > 0 ? `
+                <div class="price-features">
+                    ${price.features.map(feature => `
+                        <div class="price-feature">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            ${feature}
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+            <button class="signup-button" data-training-type="${price.title}">Записаться</button>
         `;
         pricesSlider.appendChild(block);
     }
 
     function openPricesModal(idx = 0) {
         currentPriceBlock = idx;
-        renderPriceBlock(currentPriceBlock);
+        renderPrice(currentPriceBlock);
         modalPrices.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         // Добавляем обработчик для новой кнопки после рендера
-        document.querySelectorAll('.signup-trial-button').forEach(button => {
+        document.querySelectorAll('.signup-button').forEach(button => {
             button.addEventListener('click', () => {
                 window.location.href = 'https://infototalbodyonline.impulsecrm.ru/widget/360';
             });
@@ -469,11 +466,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     pricesPrev.addEventListener('click', () => {
         currentPriceBlock = (currentPriceBlock - 1 + prices.length) % prices.length;
-        renderPriceBlock(currentPriceBlock);
+        renderPrice(currentPriceBlock);
     });
     pricesNext.addEventListener('click', () => {
         currentPriceBlock = (currentPriceBlock + 1) % prices.length;
-        renderPriceBlock(currentPriceBlock);
+        renderPrice(currentPriceBlock);
     });
     modalPricesClose.addEventListener('click', closePricesModal);
     modalPricesBackdrop.addEventListener('click', closePricesModal);
@@ -651,14 +648,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Открытие по клику на кнопку "Мы в Telegram"
     document.querySelectorAll('.overlap-8').forEach(el => {
         el.addEventListener('click', () => {
-            tg.openLink('https://t.me/totalbody_love');
+            tg.openLink('https://t.me/TotalBodyVernadskogo');
         });
     });
 
     // Открытие по клику на кнопку "Мы в Вконтакте"
     document.querySelectorAll('.overlap-9').forEach(el => {
         el.addEventListener('click', () => {
-            tg.openLink('https://vk.com/totalbody');
+            tg.openLink('https://vk.ru/total_body_msk_vernadskogo');
         });
     });
 });
