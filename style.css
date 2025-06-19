@@ -71,15 +71,12 @@
 html, body {
   width: 100%;
   max-width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: hidden;
   margin: 0;
   padding: 0;
   background-color: #f0e6da;
   box-sizing: border-box;
-  height: 100%;
-  overflow: hidden;
-  position: fixed;
 }
 
 .app {
@@ -241,8 +238,16 @@ html, body {
     position: absolute;
     width: 188px;
     height: 216px;
+    max-width: 188px;
+    max-height: 216px;
+    min-width: 188px;
+    min-height: 216px;
     top: 20px;
     left: 128px;
+    border-radius: 18px;
+    object-fit: cover;
+    overflow: hidden;
+    box-sizing: border-box;
   }
   
   .app .frame-3 {
@@ -407,13 +412,13 @@ html, body {
   }
   
   .app .overlap-group-wrapper {
-    left: 5%;
-    position: absolute;
+    position: relative;
     width: 340px;
     height: 415px;
-    background-color: #ffffff;
     border-radius: 30px;
     overflow: hidden;
+    margin-right: 20px;
+    flex: 0 0 auto;
   }
   
   .app .overlap-4 {
@@ -2354,7 +2359,7 @@ html, body {
   width:  95%;
   height: 400px;
   top: 2550px;
-  left: 0;
+  left: 20px;
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -3133,11 +3138,9 @@ html, body {
   position: relative;
 }
 .price-block {
-    background: #fff;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     margin: 0 auto;
 }
@@ -3186,7 +3189,7 @@ html, body {
 }
 
 .signup-button {
-    background: #4CAF50;
+    background: #900c3f;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -3200,7 +3203,7 @@ html, body {
 }
 
 .signup-button:hover {
-    background: #45a049;
+    background: #900c3fab;
 }
 
 @media (max-width: 768px) {
@@ -3715,4 +3718,364 @@ html, body {
     .how-to-find-image {
         border-radius: 0;
     }
+}
+
+/* Модальное окно О нас */
+.modal-about {
+    position: fixed;
+    z-index: 10005;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+    overflow-y: auto;
+    backdrop-filter: blur(8px);
+    background: rgba(30, 0, 30, 0.10);
+}
+.modal-about__backdrop {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(30, 0, 30, 0.18);
+    z-index: 1;
+    backdrop-filter: blur(16px);
+}
+.modal-about__content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.85);
+    border-radius: 44px;
+    box-shadow: 0 12px 48px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+    width: 92vw;
+    max-width: 540px;
+    min-width: 280px;
+    padding: 48px 36px 36px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: modalAppleIn 0.45s cubic-bezier(.4,0,.2,1);
+    opacity: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, background 0.3s;
+    text-align: center;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+}
+@keyframes modalAppleIn {
+    from { opacity: 0; transform: scale(0.96) translateY(30px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-about__close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 2.6rem;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    color: #900c3f;
+    cursor: pointer;
+    z-index: 3;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+    font-weight: 900;
+}
+.modal-about__close:hover {
+    background: #fff;
+    color: #6a0f30;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    transform: scale(1.08);
+}
+.about-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #8d1342;
+    margin-bottom: 22px;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    width: 100%;
+    /* text-align: left; */
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-align: center;
+}
+.about-main-text {
+    text-align: center;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    margin-bottom: 18px;
+}
+.about-main-text p {
+    font-size: 1.18rem;
+    color: #222;
+    margin-bottom: 16px;
+    line-height: 1.7;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+.about-main-text p b {
+    font-weight: 700;
+    color: #8d1342;
+}
+.about-mission-block {
+    margin-top: 28px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+}
+.about-mission-title {
+    font-size: 1.35rem;
+    color: #900c3f;
+    font-weight: 800;
+    margin-bottom: 18px;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+.about-mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+}
+.about-mission-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s forwards;
+    font-size: 1.08rem;
+    color: #5a1a2c;
+    margin-bottom: 18px;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    justify-content: center;
+    text-align: left;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-about__content {
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        padding: 16px 8px 12px 8px;
+    }
+    .modal-about__close {
+        top: 8px;
+        right: 10px;
+        font-size: 1.5rem;
+        width: 32px;
+        height: 32px;
+    }
+    .about-title {
+        font-size: 1.3rem;
+    }
+    .about-main-text p, .about-mission-item {
+        font-size: 0.98rem;
+    }
+}
+
+/* Модальное окно подробной информации о тренировках */
+.modal-training-info {
+    position: fixed;
+    z-index: 10010;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+    overflow-y: auto;
+    backdrop-filter: blur(8px);
+    background: rgba(30, 0, 30, 0.10);
+}
+.modal-training-info__backdrop {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(30, 0, 30, 0.18);
+    z-index: 1;
+    backdrop-filter: blur(16px);
+}
+.modal-training-info__content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.95);
+    border-radius: 36px;
+    box-shadow: 0 12px 48px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+    width: 92vw;
+    max-width: 600px;
+    min-width: 280px;
+    padding: 44px 28px 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: modalAppleIn 0.45s cubic-bezier(.4,0,.2,1);
+    opacity: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, background 0.3s;
+}
+.modal-training-info__close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    font-size: 2.2rem;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    color: #900c3f;
+    cursor: pointer;
+    z-index: 3;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+    font-weight: 900;
+}
+.modal-training-info__close:hover {
+    background: #fff;
+    color: #6a0f30;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    transform: scale(1.08);
+}
+.modal-training-info__body {
+    width: 100%;
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    color: #2a1a1a;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin-top: 8px;
+}
+.modal-training-info__body h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #8d1342;
+    margin-bottom: 18px;
+    text-align: center;
+    letter-spacing: 0.01em;
+}
+.modal-training-info__body h3 {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #900c3f;
+    margin: 22px 0 10px 0;
+    text-align: left;
+}
+.modal-training-info__body b {
+    color: #8d1342;
+    font-weight: 700;
+}
+.modal-training-info__body ul {
+    margin: 10px 0 18px 18px;
+    padding-left: 18px;
+}
+.modal-training-info__body ul li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 0.5em;
+}
+.modal-training-info__body ul li::before {
+    content: '•';
+    color: #900c3f;
+    font-size: 1.2em;
+    position: absolute;
+    left: -1em;
+    top: 0.1em;
+}
+.modal-training-info__body p {
+    margin-bottom: 12px;
+    text-align: left;
+}
+@media (max-width: 600px) {
+    .modal-training-info__content {
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        padding: 16px 4vw 12px 4vw;
+    }
+    .modal-training-info__close {
+        top: 8px;
+        right: 8px;
+        font-size: 1.5rem;
+        width: 38px;
+        height: 38px;
+    }
+    .modal-training-info__body h2 {
+        font-size: 1.3rem;
+    }
+    .modal-training-info__body {
+        font-size: 0.98rem;
+    }
+}
+
+.more-info-btn {
+  display: block;
+  width: 100%;
+  margin: 14px 0 8px 0;
+  padding: 10px 0;
+  background: #f1f1f1;
+  color: #900c3f;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+  box-shadow: 0 2px 12px rgba(144,12,63,0.08);
+  outline: none;
+}
+.more-info-btn:hover, .more-info-btn:focus {
+  background: #b71c5a;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(144,12,63,0.18);
+  transform: scale(1.04);
+}
+@media (max-width: 600px) {
+  .more-info-btn {
+    font-size: 0.98rem;
+    padding: 9px 0;
+    border-radius: 30px;
+  }
+}
+
+.app .overlap-4 .more-info-btn {
+  position: absolute;
+  left: 230px;
+  width: 90px;
+  height: 40px;
+  top: 347px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
 }
