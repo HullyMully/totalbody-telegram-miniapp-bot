@@ -71,12 +71,11 @@
 html, body {
   width: 100%;
   max-width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
   background-color: #f0e6da;
   box-sizing: border-box;
+  height: 100%;
 }
 
 .app {
@@ -1221,7 +1220,6 @@ html, body {
   .app .group-13 {
     position: relative;
     width: 283px;
-    height: 730px;
     top: 66px;
     left: 48px;
   }
@@ -2356,10 +2354,10 @@ html, body {
 
 .app .training-items-container {
   position: absolute;
-  width:  95%;
+  width:  100%;
   height: 400px;
   top: 2550px;
-  left: 20px;
+  left: 0;
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -2382,6 +2380,7 @@ html, body {
 .app .frame-16 {
   flex: 0 0 auto;
   margin-right: 20px;
+  margin-left: 20px;
   scroll-snap-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
