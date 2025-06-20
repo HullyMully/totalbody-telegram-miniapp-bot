@@ -650,7 +650,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Открытие по клику на кнопку "Мы в Telegram"
     document.querySelectorAll('.overlap-8').forEach(el => {
         el.addEventListener('click', () => {
-            tg.openLink('https://t.me/TotalBodyVernadskogo');
+            tg.openLink('https://t.me/total_body_ver');
         });
     });
 
