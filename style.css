@@ -885,7 +885,8 @@ html, body {
   .app .element-3 {
     position: absolute;
     top: 5084px;
-    left: -5%;
+    width: 250px;
+    left: 15%;
     font-family: 'Gotham Pro', Helvetica;
     font-weight: 400;
     color: #f0e6da;
@@ -929,8 +930,8 @@ html, body {
   .app .element-4 {
     position: absolute;
     top: 5254px;
-    left: 10px;
-    width: 350px;
+    left: 15%;
+    width: 250px;
     font-family: 'Gotham Pro', Helvetica;
     font-weight: 400;
     color: #f0e6da;
