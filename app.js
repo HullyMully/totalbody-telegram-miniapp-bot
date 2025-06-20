@@ -992,7 +992,7 @@ function handleSignup(event) {
     const message = encodeURIComponent(`Здравствуйте! Я хочу записаться на: ${trainingType}`);
     
     // Открываем чат в Telegram с предварительным сообщением
-    window.open(`https://t.me/TotalBodyVernadskogo?start=${encodeURIComponent(trainingType)}`, '_blank');
+    window.open(`https://t.me/m/AVlt5J-jODRi`, '_blank');
 
     // Отправляем данные в Telegram для аналитики
     tg.sendData(JSON.stringify({
@@ -1008,20 +1008,30 @@ function handleSocialClick(event) {
     let url = '';
     
     // Проверяем все возможные классы для Telegram
-    if (button.classList.contains('logos-telegram') || 
-        button.classList.contains('logos-telegram') || 
-        button.classList.contains('logos-telegram-2') || 
-        button.classList.contains('logos-telegram-3') || 
+    if (button.classList.contains('logos-telegram-2') || 
         button.classList.contains('logos-telegram-5')) {
         url = 'https://t.me/m/sz9nm4vjNWFi';
     } 
+    else if (button.classList.contains('logos-telegram') || 
+            button.classList.contains('logos-telegram')) {
+        url = 'https://t.me/total_body';
+    } 
+    else if (button.classList.contains('logos-telegram-3') || 
+            button.classList.contains('logos-telegram-3')) {
+        url = 'https://t.me/totalbody_vershinina';
+        } 
     // Проверяем все возможные классы для WhatsApp
-    else if (button.classList.contains('logos-whatsapp-icon') || 
-             button.classList.contains('logos-whatsapp-icon-2') || 
-             button.classList.contains('logos-whatsapp-icon-3') || 
+    else if (button.classList.contains('logos-whatsapp-icon-2') || 
              button.classList.contains('logos-whatsapp-icon-4')) {
         url = 'https://api.whatsapp.com/send/?phone=79150640309&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0A%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%2C+%D0%BD%D0%BE+%D0%BF%D0%BE%D0%BA%D0%B0+%D0%BD%D0%B5+%D0%B7%D0%BD%D0%B0%D1%8E%2C+%D0%BD%D0%B0+%D1%87%D1%82%D0%BE+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%E2%80%94+%D1%82%D1%8F%D0%BD%D1%83%D1%82%D1%8C%D1%81%D1%8F%2C+%D0%BF%D1%80%D1%8B%D0%B3%D0%B0%D1%82%D1%8C+%D0%B8%D0%BB%D0%B8+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE+%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE+%D0%BB%D0%B5%D0%B6%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA%D0%B5+%EF%BF%BD+%0A%0A%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D1%87%D1%82%D0%BE-%D1%82%D0%BE+%D0%BF%D0%BE%D0%B4%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B5%D0%B5+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%3F&type=phone_number&app_absent=0';
     } 
+    else if (button.classList.contains('logos-whatsapp-icon')) {
+        url = 'https://api.whatsapp.com/send/?phone=89936035769&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0A%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%2C+%D0%BD%D0%BE+%D0%BF%D0%BE%D0%BA%D0%B0+%D0%BD%D0%B5+%D0%B7%D0%BD%D0%B0%D1%8E%2C+%D0%BD%D0%B0+%D1%87%D1%82%D0%BE+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%E2%80%94+%D1%82%D1%8F%D0%BD%D1%83%D1%82%D1%8C%D1%81%D1%8F%2C+%D0%BF%D1%80%D1%8B%D0%B3%D0%B0%D1%82%D1%8C+%D0%B8%D0%BB%D0%B8+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE+%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE+%D0%BB%D0%B5%D0%B6%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA%D0%B5+%EF%BF%BD+%0A%0A%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D1%87%D1%82%D0%BE-%D1%82%D0%BE+%D0%BF%D0%BE%D0%B4%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B5%D0%B5+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%3F&type=phone_number&app_absent=0';
+    } 
+    else if (button.classList.contains('logos-whatsapp-icon-3')) {
+        url = 'https://api.whatsapp.com/send/?phone=89998518744&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0A%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%2C+%D0%BD%D0%BE+%D0%BF%D0%BE%D0%BA%D0%B0+%D0%BD%D0%B5+%D0%B7%D0%BD%D0%B0%D1%8E%2C+%D0%BD%D0%B0+%D1%87%D1%82%D0%BE+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%E2%80%94+%D1%82%D1%8F%D0%BD%D1%83%D1%82%D1%8C%D1%81%D1%8F%2C+%D0%BF%D1%80%D1%8B%D0%B3%D0%B0%D1%82%D1%8C+%D0%B8%D0%BB%D0%B8+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE+%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE+%D0%BB%D0%B5%D0%B6%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA%D0%B5+%EF%BF%BD+%0A%0A%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D1%87%D1%82%D0%BE-%D1%82%D0%BE+%D0%BF%D0%BE%D0%B4%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B5%D0%B5+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%3F&type=phone_number&app_absent=0';
+    } 
+    
     // Проверяем ВКонтакте (иконка или текст)
     else if (button.classList.contains('vector-11') || 
              button.closest('.overlap-9')) {
