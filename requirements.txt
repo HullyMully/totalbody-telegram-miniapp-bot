@@ -1,0 +1,5 @@
+aiogram
+requests
+openpyxl
+asyncpg
+python-dotenv

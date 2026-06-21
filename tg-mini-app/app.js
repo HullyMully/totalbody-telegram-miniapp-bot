@@ -1,5 +1,24 @@
 // Инициализация Telegram WebApp
-const tg = window.Telegram.WebApp;
+const tg = window.Telegram?.WebApp || {
+    expand() {},
+    enableClosingConfirmation() {},
+    openLink(url) {
+        window.open(url, '_blank', 'noopener');
+    },
+    sendData() {},
+};
+
+const PUBLIC_LINKS = {
+    signup: 'https://t.me/your_totalbody_bot',
+    mobileApp: 'https://example.com/mobile-app',
+    whatsappVernadskogo: 'https://example.com/contact/vernadskogo',
+    whatsappKommunarka: 'https://example.com/contact/kommunarka',
+    whatsappVershinina: 'https://example.com/contact/vershinina',
+    telegramMain: 'https://t.me/total_body',
+    telegramVernadskogo: 'https://t.me/total_body_ver',
+    telegramVershinina: 'https://t.me/totalbody_vershinina',
+    vkVernadskogo: 'https://vk.ru/total_body_msk_vernadskogo',
+};
 
 // Инициализация приложения
 document.addEventListener('DOMContentLoaded', () => {
@@ -256,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Ирина Мозалева',
             desc: 'Ирина — сертифицированный инструктор хатха-йоги (YTTC-200, Федерация йоги России) с образованием МГУ (филология). Её занятия сочетают практику, философию и осознанность, балансируя физическую нагрузку и внутреннее спокойствие. С детства Ирина занималась балетом и фитнесом, но йога стала её путём к ментальной устойчивости. Более года она ведёт групповые и индивидуальные тренировки, включая гвоздестояние для глубокого расслабления и концентрации. Вне йоги Ирина читает, изучает французский и увлекается плаванием. Она создаёт вдохновляющее пространство, где каждый чувствует себя услышанным. Занятия с Ириной помогут обрести гармонию тела и разума, внутреннюю силу и устойчивость.'
         },
+        
         {
             photo: 'https://res.cloudinary.com/dj05yedo3/image/upload/v1749661522/erdd8vlaigsm8bkzzesz.jpg',
             name: 'Наталья Зуева',
@@ -457,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Делегирование событий для signup-button
     pricesSlider.addEventListener('click', function(e) {
         if (e.target.classList.contains('signup-button')) {
-            tg.openLink('https://t.me/m/sz9nm4vjNWFi');
+            tg.openLink(PUBLIC_LINKS.signup);
         }
     });
 
@@ -633,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.group-32, .group-32 .text-wrapper-46').forEach(el => {
         if (el.textContent.trim().toLowerCase().includes('мобильное приложение')) {
             el.addEventListener('click', () => {
-                tg.openLink('https://tech.impulsecrm.ru/static/mobile?name=totalbody');
+                tg.openLink(PUBLIC_LINKS.mobileApp);
             });
         }
     });
@@ -642,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.rectangle-4, .text-wrapper-31').forEach(el => {
         if (el.textContent.trim().toLowerCase().includes('скачать приложение')) {
             el.addEventListener('click', () => {
-                tg.openLink('https://tech.impulsecrm.ru/static/mobile?name=totalbody');
+                tg.openLink(PUBLIC_LINKS.mobileApp);
             });
         }
     });
@@ -650,14 +670,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Открытие по клику на кнопку "Мы в Telegram"
     document.querySelectorAll('.overlap-8').forEach(el => {
         el.addEventListener('click', () => {
-            tg.openLink('https://t.me/total_body_ver');
+            tg.openLink(PUBLIC_LINKS.telegramVernadskogo);
         });
     });
 
     // Открытие по клику на кнопку "Мы в Вконтакте"
     document.querySelectorAll('.overlap-9').forEach(el => {
         el.addEventListener('click', () => {
-            tg.openLink('https://vk.ru/total_body_msk_vernadskogo');
+            tg.openLink(PUBLIC_LINKS.vkVernadskogo);
         });
     });
 
@@ -990,9 +1010,9 @@ function handleSignup(event) {
 
     // Формируем сообщение для Telegram
     const message = encodeURIComponent(`Здравствуйте! Я хочу записаться на: ${trainingType}`);
-    
-    // Открываем чат в Telegram с предварительным сообщением
-    window.open(`https://t.me/m/AVlt5J-jODRi`, '_blank');
+
+    // Открываем публичный demo-link бота для записи
+    tg.openLink(PUBLIC_LINKS.signup);
 
     // Отправляем данные в Telegram для аналитики
     tg.sendData(JSON.stringify({
@@ -1010,32 +1030,32 @@ function handleSocialClick(event) {
     // Проверяем все возможные классы для Telegram
     if (button.classList.contains('logos-telegram-2') || 
         button.classList.contains('logos-telegram-5')) {
-        url = 'https://t.me/m/sz9nm4vjNWFi';
+        url = PUBLIC_LINKS.signup;
     } 
     else if (button.classList.contains('logos-telegram') || 
             button.classList.contains('logos-telegram')) {
-        url = 'https://t.me/total_body';
+        url = PUBLIC_LINKS.telegramMain;
     } 
     else if (button.classList.contains('logos-telegram-3') || 
             button.classList.contains('logos-telegram-3')) {
-        url = 'https://t.me/totalbody_vershinina';
+        url = PUBLIC_LINKS.telegramVershinina;
         } 
     // Проверяем все возможные классы для WhatsApp
     else if (button.classList.contains('logos-whatsapp-icon-2') || 
              button.classList.contains('logos-whatsapp-icon-4')) {
-        url = 'https://api.whatsapp.com/send/?phone=79150640309&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0A%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%2C+%D0%BD%D0%BE+%D0%BF%D0%BE%D0%BA%D0%B0+%D0%BD%D0%B5+%D0%B7%D0%BD%D0%B0%D1%8E%2C+%D0%BD%D0%B0+%D1%87%D1%82%D0%BE+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%E2%80%94+%D1%82%D1%8F%D0%BD%D1%83%D1%82%D1%8C%D1%81%D1%8F%2C+%D0%BF%D1%80%D1%8B%D0%B3%D0%B0%D1%82%D1%8C+%D0%B8%D0%BB%D0%B8+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE+%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE+%D0%BB%D0%B5%D0%B6%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA%D0%B5+%EF%BF%BD+%0A%0A%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D1%87%D1%82%D0%BE-%D1%82%D0%BE+%D0%BF%D0%BE%D0%B4%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B5%D0%B5+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%3F&type=phone_number&app_absent=0';
+        url = PUBLIC_LINKS.whatsappKommunarka;
     } 
     else if (button.classList.contains('logos-whatsapp-icon')) {
-        url = 'https://api.whatsapp.com/send/?phone=79936035769&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0A%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%2C+%D0%BD%D0%BE+%D0%BF%D0%BE%D0%BA%D0%B0+%D0%BD%D0%B5+%D0%B7%D0%BD%D0%B0%D1%8E%2C+%D0%BD%D0%B0+%D1%87%D1%82%D0%BE+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%E2%80%94+%D1%82%D1%8F%D0%BD%D1%83%D1%82%D1%8C%D1%81%D1%8F%2C+%D0%BF%D1%80%D1%8B%D0%B3%D0%B0%D1%82%D1%8C+%D0%B8%D0%BB%D0%B8+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE+%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE+%D0%BB%D0%B5%D0%B6%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA%D0%B5+%EF%BF%BD+%0A%0A%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D1%87%D1%82%D0%BE-%D1%82%D0%BE+%D0%BF%D0%BE%D0%B4%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B5%D0%B5+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%3F&type=phone_number&app_absent=0';
+        url = PUBLIC_LINKS.whatsappVernadskogo;
     } 
     else if (button.classList.contains('logos-whatsapp-icon-3')) {
-        url = 'https://api.whatsapp.com/send/?phone=79998518744&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0A%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F+%D0%BD%D0%B0+%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D0%B5%2C+%D0%BD%D0%BE+%D0%BF%D0%BE%D0%BA%D0%B0+%D0%BD%D0%B5+%D0%B7%D0%BD%D0%B0%D1%8E%2C+%D0%BD%D0%B0+%D1%87%D1%82%D0%BE+%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE+%E2%80%94+%D1%82%D1%8F%D0%BD%D1%83%D1%82%D1%8C%D1%81%D1%8F%2C+%D0%BF%D1%80%D1%8B%D0%B3%D0%B0%D1%82%D1%8C+%D0%B8%D0%BB%D0%B8+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE+%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE+%D0%BB%D0%B5%D0%B6%D0%B0%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%BE%D0%B2%D1%80%D0%B8%D0%BA%D0%B5+%EF%BF%BD+%0A%0A%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5+%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C+%D1%87%D1%82%D0%BE-%D1%82%D0%BE+%D0%BF%D0%BE%D0%B4%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B5%D0%B5+%D0%B4%D0%BB%D1%8F+%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%3F&type=phone_number&app_absent=0';
+        url = PUBLIC_LINKS.whatsappVershinina;
     } 
     
     // Проверяем ВКонтакте (иконка или текст)
     else if (button.classList.contains('vector-11') || 
              button.closest('.overlap-9')) {
-        url = 'https://vk.ru/total_body_msk_vernadskogo';
+        url = PUBLIC_LINKS.vkVernadskogo;
     }
     
     if (url) {
