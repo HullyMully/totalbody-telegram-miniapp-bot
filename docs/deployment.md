@@ -20,20 +20,19 @@ BotFather and `WEBAPP_URL`.
 
 1. Push this repository to GitHub or GitLab.
 2. In Render, create a new Blueprint from the repository.
-3. During the first Blueprint setup, enter values when prompted:
-   `BOT_TOKEN`, `ADMIN_IDS` and `WEBAPP_URL`.
-   Use the expected static URL plus the bot username, for example
-   `https://totalbody-mini-app-demo.onrender.com/?bot=your_bot_username`.
+3. During the first Blueprint setup, enter the secret `BOT_TOKEN` value when
+   prompted. The public demo config already sets `ADMIN_IDS=5947469995` and
+   `WEBAPP_URL=https://totalbody-mini-app-demo.onrender.com`.
 4. Deploy the Blueprint.
 5. Open the static site and copy its actual `https://...onrender.com` URL.
 6. If Render assigned a different static URL than
    `https://totalbody-mini-app-demo.onrender.com`, update the bot service
    environment variable `WEBAPP_URL`.
-7. Keep the real bot username in the Mini App URL query parameter. This makes
-   all booking CTA buttons open the correct Telegram bot without hardcoding a
-   public portfolio link.
-8. In BotFather, set the Mini App/Web App URL to the final static site URL.
-9. Send `/start` to the bot and check the health endpoint:
+7. Send `/start` to the bot and press the `Open Mini App` button to launch the
+   Mini App inside Telegram.
+8. Optionally, configure a BotFather Mini App short name to get a direct link
+   like `https://t.me/<bot_username>/<mini_app_short_name>`.
+9. Check the health endpoint:
    `https://<bot-service>.onrender.com/healthz`.
 
 ### Free-tier notes

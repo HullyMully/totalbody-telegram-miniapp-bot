@@ -15,7 +15,8 @@ This repository is a public portfolio version of a freelance project for TotalBo
 
 ## Live Demo
 
-- [Open the Mini App demo](https://totalbody-mini-app-demo.onrender.com)
+- [Open the browser Mini App preview](https://totalbody-mini-app-demo.onrender.com)
+- Telegram demo: open the demo bot, send `/start`, then press **Open Mini App** to launch the Mini App inside Telegram.
 - [Check the bot service health endpoint](https://totalbody-bot-demo.onrender.com/healthz)
 
 The demo is hosted on Render free services. The first request after an idle period can take a little longer while the service wakes up.

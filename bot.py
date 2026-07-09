@@ -32,10 +32,6 @@ ADMIN_IDS = {
 BOT_MODE = os.getenv("BOT_MODE", "polling").strip().lower()
 WEBAPP_URL = os.getenv("WEBAPP_URL", "https://example.com").strip()
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///demo.db").strip()
-WELCOME_PHOTO_URL = os.getenv(
-    "WELCOME_PHOTO_URL",
-    "https://res.cloudinary.com/dd58ooqcc/image/upload/v1751566051/IMG_4544_s7jw2z.jpg",
-).strip()
 WEBHOOK_PATH = os.getenv("WEBHOOK_PATH", "/webhook").strip() or "/webhook"
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "").strip()
 HOST = os.getenv("HOST", "0.0.0.0").strip()
@@ -234,10 +230,20 @@ def register_handlers(dp: Dispatcher, storage: SQLiteStorage | PostgresStorage) 
             "- комфортные и мягкие тренировки;\n"
             "- квалифицированных тренеров;\n"
             "- удобную запись и напоминания;\n"
-            "- теплую атмосферу и поддержку."
+            "- теплую атмосферу и поддержку.\n\n"
+            "Нажмите кнопку ниже, чтобы открыть демо Mini App внутри Telegram."
         )
-        await message.answer_photo(WELCOME_PHOTO_URL, caption=welcome_text)
-        await message.answer(f"Вот ссылка на мини-приложение: {WEBAPP_URL}")
+        mini_app_keyboard = types.InlineKeyboardMarkup(
+            inline_keyboard=[
+                [
+                    types.InlineKeyboardButton(
+                        text="Открыть Mini App",
+                        web_app=types.WebAppInfo(url=WEBAPP_URL),
+                    )
+                ]
+            ]
+        )
+        await message.answer(welcome_text, reply_markup=mini_app_keyboard)
         if added:
             logger.info("Added new Telegram user: %s", user.user_id)
         else:
