@@ -18,7 +18,7 @@ function normalizeTelegramUrl(value) {
 }
 
 const PUBLIC_LINKS = {
-    signup: normalizeTelegramUrl(runtimeParams.get('signup') || runtimeParams.get('bot')) || 'https://t.me/your_totalbody_bot',
+    signup: normalizeTelegramUrl(runtimeParams.get('signup') || runtimeParams.get('bot')) || 'https://t.me/demohmtgbot',
     mobileApp: 'https://example.com/mobile-app',
     whatsappVernadskogo: 'https://example.com/contact/vernadskogo',
     whatsappKommunarka: 'https://example.com/contact/kommunarka',

@@ -16,7 +16,7 @@ Telegram Mini App и Telegram bot для студии растяжки TotalBody
 ## Демо
 
 - [Открыть браузерное превью Mini App](https://totalbody-mini-app-demo.onrender.com)
-- Telegram demo: открой demo-бота, отправь `/start`, затем нажми **Открыть Mini App**, чтобы запустить Mini App внутри Telegram.
+- [Открыть Telegram demo-бота](https://t.me/demohmtgbot), отправь `/start`, затем нажми **Открыть Mini App**, чтобы запустить Mini App внутри Telegram.
 - [Проверить health endpoint сервиса бота](https://totalbody-bot-demo.onrender.com/healthz)
 
 Демо размещено на бесплатных сервисах Render. Первый запрос после простоя может открываться чуть дольше, пока сервис просыпается.

@@ -22,14 +22,14 @@ BotFather and `WEBAPP_URL`.
 2. In Render, create a new Blueprint from the repository.
 3. During the first Blueprint setup, enter the secret `BOT_TOKEN` value when
    prompted. The public demo config already sets `ADMIN_IDS=5947469995` and
-   `WEBAPP_URL=https://totalbody-mini-app-demo.onrender.com`.
+   `WEBAPP_URL=https://totalbody-mini-app-demo.onrender.com?bot=demohmtgbot`.
 4. Deploy the Blueprint.
 5. Open the static site and copy its actual `https://...onrender.com` URL.
 6. If Render assigned a different static URL than
    `https://totalbody-mini-app-demo.onrender.com`, update the bot service
    environment variable `WEBAPP_URL`.
-7. Send `/start` to the bot and press the `Open Mini App` button to launch the
-   Mini App inside Telegram.
+7. Open `https://t.me/demohmtgbot`, send `/start`, and press the `Open Mini App`
+   button to launch the Mini App inside Telegram.
 8. Optionally, configure a BotFather Mini App short name to get a direct link
    like `https://t.me/<bot_username>/<mini_app_short_name>`.
 9. Check the health endpoint:
