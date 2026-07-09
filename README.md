@@ -13,6 +13,13 @@ Telegram Mini App and bot for TotalBody stretching studio: service info, booking
 
 This repository is a public portfolio version of a freelance project for TotalBody. Secrets, client records and private data are excluded from the repository.
 
+## Live Demo
+
+- [Open the Mini App demo](https://totalbody-mini-app-demo.onrender.com)
+- [Check the bot service health endpoint](https://totalbody-bot-demo.onrender.com/healthz)
+
+The demo is hosted on Render free services. The first request after an idle period can take a little longer while the service wakes up.
+
 ## Overview
 
 The project combines a Telegram Mini App for studio discovery with a Telegram bot that supports onboarding, client data collection, booking handoff, user profile storage and admin broadcasts. The Mini App presents studio information, training directions, prices, schedule entry points, gallery content and social links. The bot keeps the interaction inside Telegram and gives the studio a lightweight communication channel.
