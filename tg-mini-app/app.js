@@ -522,14 +522,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function openVideoModal() {
         modalVideo.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        videoPlayer.play(); // Начать воспроизведение видео
     }
 
     function closeVideoModal() {
         modalVideo.style.display = 'none';
         document.body.style.overflow = '';
-        videoPlayer.pause(); // Остановить воспроизведение видео
-        videoPlayer.currentTime = 0; // Сбросить видео на начало
+        if (videoPlayer && typeof videoPlayer.pause === 'function') {
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+        }
     }
 
     modalVideoClose.addEventListener('click', closeVideoModal);
