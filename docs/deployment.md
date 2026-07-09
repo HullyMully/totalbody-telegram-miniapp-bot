@@ -1,6 +1,50 @@
 # Deployment
 
-This project can be deployed to a VDS, including Selectel, without committing secrets.
+This project can be deployed either as a free public demo on Render or as a
+classic VDS deployment. Do not commit production secrets.
+
+## Free Render Demo
+
+The repository includes `render.yaml`, which creates:
+
+- `totalbody-mini-app-demo`: a free Render static site serving `tg-mini-app/`.
+- `totalbody-bot-demo`: a free Render Python web service running the bot in
+  webhook mode.
+- `totalbody-demo-db`: a free Render Postgres database for saved Telegram users.
+
+Render provides HTTPS URLs for the static site and web service. Telegram Mini
+Apps need an HTTPS URL, so the static site URL is the one to configure in
+BotFather and `WEBAPP_URL`.
+
+### Steps
+
+1. Push this repository to GitHub or GitLab.
+2. In Render, create a new Blueprint from the repository.
+3. During the first Blueprint setup, enter values when prompted:
+   `BOT_TOKEN`, `ADMIN_IDS` and `WEBAPP_URL`.
+   Use the expected static URL plus the bot username, for example
+   `https://totalbody-mini-app-demo.onrender.com/?bot=your_bot_username`.
+4. Deploy the Blueprint.
+5. Open the static site and copy its actual `https://...onrender.com` URL.
+6. If Render assigned a different static URL than
+   `https://totalbody-mini-app-demo.onrender.com`, update the bot service
+   environment variable `WEBAPP_URL`.
+7. Keep the real bot username in the Mini App URL query parameter. This makes
+   all booking CTA buttons open the correct Telegram bot without hardcoding a
+   public portfolio link.
+8. In BotFather, set the Mini App/Web App URL to the final static site URL.
+9. Send `/start` to the bot and check the health endpoint:
+   `https://<bot-service>.onrender.com/healthz`.
+
+### Free-tier notes
+
+This setup is intended for portfolio/demo use only:
+
+- Free Render web services can sleep after idle periods, so the first Telegram
+  request after inactivity may have a cold start delay.
+- Free Render Postgres is temporary and should not be used for production data.
+- The bot runs as a webhook web service because Render's free plan does not
+  support free background workers.
 
 ## General Server Setup
 
@@ -21,6 +65,10 @@ BOT_TOKEN=...
 ADMIN_IDS=...
 WEBAPP_URL=https://your-domain.example
 DATABASE_URL=postgresql://user:password@host:5432/database
+BOT_MODE=webhook
+WEBHOOK_URL=https://your-bot-service.example
+WEBHOOK_PATH=/webhook
+WEBHOOK_SECRET=optional_custom_secret
 ```
 
 Do not commit production values.
@@ -32,6 +80,25 @@ Local demo mode can use SQLite. Server deployment should use a managed or self-h
 ## Mini App Hosting
 
 Telegram Mini Apps require HTTPS in real usage. The static Mini App can be served through Nginx, Caddy or another web server. Cache headers can be enabled for static assets after verifying updates.
+
+## Bot Runtime Modes
+
+Local development uses polling by default:
+
+```bash
+BOT_MODE=polling python bot.py
+```
+
+Hosted demo deployments should use webhook mode:
+
+```bash
+BOT_MODE=webhook WEBHOOK_URL=https://your-bot-service.example python bot.py
+```
+
+On Render, `WEBHOOK_URL` is optional because the app derives it from
+`RENDER_EXTERNAL_URL`. `WEBHOOK_SECRET` is also optional: if you leave it empty,
+the app derives a stable Telegram-compatible secret from `BOT_TOKEN`. If you set
+it yourself, use only `A-Z`, `a-z`, `0-9`, `_` and `-`.
 
 ## Operational Links
 

@@ -75,8 +75,12 @@ cp .env.example .env
 | --- | --- |
 | `BOT_TOKEN` | Токен Telegram bot из BotFather. |
 | `ADMIN_IDS` | Telegram ID администраторов через запятую. |
-| `WEBAPP_URL` | Публичный URL Mini App. |
+| `WEBAPP_URL` | Публичный URL Mini App; для demo CTA можно добавить `?bot=your_bot_username`. |
 | `DATABASE_URL` | `sqlite:///demo.db` для локального demo или PostgreSQL URL для деплоя. |
+| `BOT_MODE` | `polling` локально или `webhook` для hosted demo. |
+| `WEBHOOK_URL` | Публичный URL сервиса бота для webhook; на Render можно не задавать. |
+| `WEBHOOK_PATH` | Путь webhook, по умолчанию `/webhook`. |
+| `WEBHOOK_SECRET` | Optional secret token для Telegram webhook; если пусто, выводится из `BOT_TOKEN`. |
 
 ## Локальный запуск
 
@@ -94,23 +98,12 @@ python -m http.server 8000 --directory tg-mini-app
 
 Для реальной проверки Telegram Mini App нужен HTTPS URL. Его нужно указать в BotFather и в `WEBAPP_URL`.
 
-## Деплой
-
-Проект можно разместить на небольшом VDS, например Selectel. Типовая схема: Python-окружение на сервере, переменные окружения вне Git, запуск бота через `systemd`, HTTPS для Mini App и отдельная база данных. Подробности: [docs/deployment.md](docs/deployment.md).
-
-## Скриншоты
-
-Approved portfolio screenshots находятся в папке [screens](screens). Правила подготовки скриншотов описаны в [docs/screenshots/README.md](docs/screenshots/README.md).
-
-## Приватность
-
-В публичную версию не включаются `.env`, токены, API keys, приватные Telegram IDs, реальные базы данных, логи, клиентские записи, приватные uploads и внутренние ссылки. Подробнее: [docs/privacy.md](docs/privacy.md).
-
 ## Структура проекта
 
 ```text
 .
 ├── bot.py
+├── render.yaml
 ├── requirements.txt
 ├── tg-mini-app/
 │   ├── index.html

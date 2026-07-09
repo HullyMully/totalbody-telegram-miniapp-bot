@@ -423,8 +423,7 @@ html, body {
   .app .overlap-4 {
     position: relative;
     height: 415px;
-    background-image: url(./img/group-12.png);
-    background-size: 100% 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #fff8f4 55%, #f4d7df 100%);
   }
   
   .app .img-2 {
@@ -442,8 +441,8 @@ html, body {
     height: 113px;
     top: 123px;
     left: 9px;
-    background-image: url(./img/frame-6-5.svg);
-    background-size: 100% 100%;
+    background-color: #900c3f;
+    border-radius: 50%;
   }
   
   .app .vector-8 {
@@ -762,8 +761,7 @@ html, body {
     left: 12%;
     border-radius: 15.93px;
     box-shadow: 9.96px 3.98px 39.84px #00000029;
-    background-image: url(./img/frame-39.png);
-    background-size: 404px 407px;
+    background: linear-gradient(145deg, #8d1342 0%, #a23b61 48%, #f0e6da 100%);
     background-position: 50% 50%;
   }
   
@@ -1953,8 +1951,7 @@ html, body {
   .app .overlap-22 {
     position: relative;
     height: 415px;
-    background-image: url(./img/group-8.png);
-    background-size: 100% 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #f8eee5 55%, #ead5c1 100%);
   }
   
   .app .img-wrapper {
@@ -1963,8 +1960,8 @@ html, body {
     height: 113px;
     top: 123px;
     left: 9px;
-    background-image: url(./img/frame-6-7.svg);
-    background-size: 100% 100%;
+    background-color: #900c3f;
+    border-radius: 50%;
   }
   
   .app .frame-13 {
@@ -1980,8 +1977,7 @@ html, body {
   .app .overlap-23 {
     position: relative;
     height: 415px;
-    background-image: url(./img/group.png);
-    background-size: 100% 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #fff8f4 55%, #f4d7df 100%);
   }
   
   .app .overlap-24 {
@@ -1990,8 +1986,8 @@ html, body {
     height: 113px;
     top: 123px;
     left: 9px;
-    background-image: url(./img/image.svg);
-    background-size: 100% 100%;
+    background-color: #900c3f;
+    border-radius: 50%;
   }
   
   .app .frame-14 {
@@ -2007,8 +2003,7 @@ html, body {
   .app .overlap-25 {
     position: relative;
     height: 415px;
-    background-image: url(./img/group-13.png);
-    background-size: 100% 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #f7eef1 55%, #e6d5e9 100%);
   }
   
   .app .overlap-26 {
@@ -2017,8 +2012,8 @@ html, body {
     height: 113px;
     top: 123px;
     left: 9px;
-    background-image: url(./img/frame-6-3.svg);
-    background-size: 100% 100%;
+    background-color: #900c3f;
+    border-radius: 50%;
   }
   
   .app .group-29 {
@@ -2141,8 +2136,7 @@ html, body {
   .app .overlap-27 {
     position: relative;
     height: 415px;
-    background-image: url(./img/group-2.png);
-    background-size: 100% 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #fff8f4 55%, #f4d7df 100%);
   }
   
   .app .overlap-28 {
@@ -2151,8 +2145,8 @@ html, body {
     height: 113px;
     top: 123px;
     left: 9px;
-    background-image: url(./img/frame-6-2.svg);
-    background-size: 100% 100%;
+    background-color: #900c3f;
+    border-radius: 50%;
   }
   
   .app .frame-16 {
@@ -2168,8 +2162,7 @@ html, body {
   .app .overlap-29 {
     position: relative;
     height: 415px;
-    background-image: url(./img/group-4.png);
-    background-size: 100% 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #f8eee5 55%, #ead5c1 100%);
   }
   
   .app .overlap-30 {
@@ -2178,8 +2171,8 @@ html, body {
     height: 113px;
     top: 123px;
     left: 9px;
-    background-image: url(./img/frame-6.svg);
-    background-size: 100% 100%;
+    background-color: #900c3f;
+    border-radius: 50%;
   }
   
   .app .text-wrapper-47 {

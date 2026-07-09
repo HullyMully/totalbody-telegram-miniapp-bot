@@ -8,8 +8,17 @@ const tg = window.Telegram?.WebApp || {
     sendData() {},
 };
 
+const runtimeParams = new URLSearchParams(window.location.search);
+
+function normalizeTelegramUrl(value) {
+    if (!value) return '';
+    const trimmed = value.trim();
+    if (/^(https?:|tg:)/i.test(trimmed)) return trimmed;
+    return `https://t.me/${trimmed.replace(/^@/, '')}`;
+}
+
 const PUBLIC_LINKS = {
-    signup: 'https://t.me/your_totalbody_bot',
+    signup: normalizeTelegramUrl(runtimeParams.get('signup') || runtimeParams.get('bot')) || 'https://t.me/your_totalbody_bot',
     mobileApp: 'https://example.com/mobile-app',
     whatsappVernadskogo: 'https://example.com/contact/vernadskogo',
     whatsappKommunarka: 'https://example.com/contact/kommunarka',

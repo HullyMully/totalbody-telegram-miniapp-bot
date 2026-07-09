@@ -75,8 +75,12 @@ Edit `.env` locally and keep it out of Git.
 | --- | --- |
 | `BOT_TOKEN` | Telegram bot token from BotFather. |
 | `ADMIN_IDS` | Comma-separated Telegram user IDs allowed to use admin commands. |
-| `WEBAPP_URL` | Public URL of the Mini App. |
+| `WEBAPP_URL` | Public URL of the Mini App; for demo CTAs you can append `?bot=your_bot_username`. |
 | `DATABASE_URL` | `sqlite:///demo.db` for local demo or PostgreSQL URL for deployment. |
+| `BOT_MODE` | `polling` locally or `webhook` for hosted demo. |
+| `WEBHOOK_URL` | Public bot service URL for webhook mode; optional on Render. |
+| `WEBHOOK_PATH` | Webhook route, defaults to `/webhook`. |
+| `WEBHOOK_SECRET` | Optional Telegram webhook secret token; derived from `BOT_TOKEN` when empty. |
 
 ## Local Run
 
@@ -94,23 +98,12 @@ python -m http.server 8000 --directory tg-mini-app
 
 For real Telegram Mini App testing, expose the Mini App through HTTPS and set that URL in BotFather and `WEBAPP_URL`.
 
-## Deployment Notes
-
-The deployment target can be a small VDS, including Selectel. A typical setup uses Python on the server, environment variables managed outside Git, a process manager such as `systemd`, and an HTTPS endpoint for the Mini App. See [docs/deployment.md](docs/deployment.md).
-
-## Screenshots
-
-Approved portfolio screenshots are stored in [screens](screens). Screenshot publishing notes are in [docs/screenshots/README.md](docs/screenshots/README.md).
-
-## Privacy
-
-The public repository excludes `.env`, bot tokens, API keys, private admin identifiers, real databases, logs, client records, private uploads and live internal links. See [docs/privacy.md](docs/privacy.md).
-
 ## Project Structure
 
 ```text
 .
 ├── bot.py
+├── render.yaml
 ├── requirements.txt
 ├── tg-mini-app/
 │   ├── index.html

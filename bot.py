@@ -1,6 +1,8 @@
 import asyncio
+import hashlib
 import logging
 import os
+import re
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
@@ -27,16 +29,25 @@ ADMIN_IDS = {
     for value in os.getenv("ADMIN_IDS", "").split(",")
     if value.strip().isdigit()
 }
+BOT_MODE = os.getenv("BOT_MODE", "polling").strip().lower()
 WEBAPP_URL = os.getenv("WEBAPP_URL", "https://example.com").strip()
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///demo.db").strip()
 WELCOME_PHOTO_URL = os.getenv(
     "WELCOME_PHOTO_URL",
     "https://res.cloudinary.com/dd58ooqcc/image/upload/v1751566051/IMG_4544_s7jw2z.jpg",
 ).strip()
+WEBHOOK_PATH = os.getenv("WEBHOOK_PATH", "/webhook").strip() or "/webhook"
+WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "").strip()
+HOST = os.getenv("HOST", "0.0.0.0").strip()
+PORT = int(os.getenv("PORT", "8000"))
+
+if not WEBHOOK_PATH.startswith("/"):
+    WEBHOOK_PATH = f"/{WEBHOOK_PATH}"
 
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+WEBHOOK_SECRET_RE = re.compile(r"^[A-Za-z0-9_-]{1,256}$")
 
 
 @dataclass
@@ -173,6 +184,33 @@ def is_admin(user_id: int, admin_ids: Iterable[int]) -> bool:
     return user_id in set(admin_ids)
 
 
+def get_webhook_base_url() -> str:
+    explicit_url = os.getenv("WEBHOOK_URL", "").strip().rstrip("/")
+    if explicit_url:
+        return explicit_url
+
+    render_external_url = os.getenv("RENDER_EXTERNAL_URL", "").strip().rstrip("/")
+    if render_external_url:
+        return render_external_url
+
+    render_hostname = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").strip()
+    if render_hostname:
+        return f"https://{render_hostname}"
+
+    return ""
+
+
+def get_webhook_secret() -> str:
+    if WEBHOOK_SECRET:
+        if not WEBHOOK_SECRET_RE.fullmatch(WEBHOOK_SECRET):
+            raise RuntimeError(
+                "WEBHOOK_SECRET must contain only A-Z, a-z, 0-9, _ or -."
+            )
+        return WEBHOOK_SECRET
+
+    return hashlib.sha256(BOT_TOKEN.encode("utf-8")).hexdigest()
+
+
 def register_handlers(dp: Dispatcher, storage: SQLiteStorage | PostgresStorage) -> None:
     @dp.message(Command("start"))
     async def start_handler(message: types.Message) -> None:
@@ -242,23 +280,84 @@ def register_handlers(dp: Dispatcher, storage: SQLiteStorage | PostgresStorage) 
         await message.reply(f"Рассылка завершена. Отправлено: {count}")
 
 
-async def main() -> None:
+def create_runtime() -> tuple[SQLiteStorage | PostgresStorage, Bot, Dispatcher]:
+    storage = create_storage(DATABASE_URL)
+    bot = Bot(token=BOT_TOKEN)
+    dp = Dispatcher()
+    register_handlers(dp, storage)
+    return storage, bot, dp
+
+
+async def run_polling() -> None:
     if not BOT_TOKEN:
         raise RuntimeError("BOT_TOKEN is required. Set it in the environment.")
     if not ADMIN_IDS:
         logger.warning("ADMIN_IDS is empty. Admin commands will be unavailable.")
 
-    storage = create_storage(DATABASE_URL)
+    storage, bot, dp = create_runtime()
     await storage.connect()
-    bot = Bot(token=BOT_TOKEN)
-    dp = Dispatcher()
-    register_handlers(dp, storage)
     try:
+        await bot.delete_webhook(drop_pending_updates=False)
         await dp.start_polling(bot)
     finally:
         await storage.close()
         await bot.session.close()
 
 
+def run_webhook() -> None:
+    if not BOT_TOKEN:
+        raise RuntimeError("BOT_TOKEN is required. Set it in the environment.")
+
+    webhook_base_url = get_webhook_base_url()
+    if not webhook_base_url:
+        raise RuntimeError(
+            "WEBHOOK_URL or RENDER_EXTERNAL_URL is required for BOT_MODE=webhook."
+        )
+    if not ADMIN_IDS:
+        logger.warning("ADMIN_IDS is empty. Admin commands will be unavailable.")
+
+    from aiohttp import web
+    from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+
+    storage, bot, dp = create_runtime()
+    webhook_url = f"{webhook_base_url}{WEBHOOK_PATH}"
+    webhook_secret = get_webhook_secret()
+
+    async def healthcheck(request: web.Request) -> web.Response:
+        return web.json_response({"ok": True, "mode": "webhook"})
+
+    async def on_startup(bot: Bot) -> None:
+        await storage.connect()
+        await bot.set_webhook(
+            webhook_url,
+            secret_token=webhook_secret,
+            drop_pending_updates=True,
+        )
+        logger.info("Telegram webhook configured: %s", webhook_url)
+
+    async def on_shutdown(bot: Bot) -> None:
+        await storage.close()
+        await bot.session.close()
+
+    dp.startup.register(on_startup)
+    dp.shutdown.register(on_shutdown)
+
+    app = web.Application()
+    app.router.add_get("/", healthcheck)
+    app.router.add_get("/healthz", healthcheck)
+    SimpleRequestHandler(
+        dispatcher=dp,
+        bot=bot,
+        secret_token=webhook_secret,
+    ).register(app, path=WEBHOOK_PATH)
+    setup_application(app, dp, bot=bot)
+    web.run_app(app, host=HOST, port=PORT)
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    if BOT_MODE == "webhook":
+        run_webhook()
+    elif BOT_MODE == "polling":
+        asyncio.run(run_polling())
+    else:
+        raise RuntimeError("BOT_MODE must be either 'polling' or 'webhook'.")
