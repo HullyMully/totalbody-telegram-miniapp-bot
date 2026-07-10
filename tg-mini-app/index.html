@@ -1,703 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
     <title>TotalBody Mini App</title>
-    <meta name="description" content="Telegram Mini App demo for TotalBody stretching and fitness studio." />
+    <meta
+      name="description"
+      content="Демо Telegram Mini App для студии женского фитнеса и растяжки TotalBody."
+    />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=20260710" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js" defer></script>
+    <script src="app.js?v=20260710" defer></script>
   </head>
   <body>
-    <div class="app">
-      <div class="div">
-        <div class="overlap">
-          <div class="overlap-group">
-            <div class="frame">
-              <div class="overlap-2">
-                <img class="vector" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/zvhruvcszwnx0uq4gvgr.svg" loading="lazy" />
-                <img class="img" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661538/qnjifr6jfg4xvrfwcf0l.svg" loading="lazy" />
-                <img class="erasebg-transformed" src="assets/demo-hero.svg" loading="lazy" />
-                <img class="vector-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661538/ksqidxqhwfrtq9zod2dn.svg" loading="lazy" />
-                <img class="vector-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661538/mllj3r9bkgjsvyg509ee.svg" loading="lazy" />
-                <img class="vector-4" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661538/pivdwtkhey5gzmtzr2zs.svg" loading="lazy" />
-                <div class="group">
-                  <img class="shape-with-text" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/fi4a0hrovmrlyyvzdpxg.svg" loading="lazy" />
-                  <img class="shape-with-text-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/fi4a0hrovmrlyyvzdpxg.svg" loading="lazy" />
-                </div>
-                <img class="frame-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661533/qcncqehvua1rwilfmdrl.svg" loading="lazy" />
-                <img class="group-2" src="assets/demo-hero.svg" loading="lazy" />
-                <div class="rectangle"></div>
-                <div class="overlap-wrapper">
-                  <div class="overlap-3">
-                    <img class="group-3" src="assets/demo-card.svg" loading="lazy" />
-                    <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy" />
-                    <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy" />
-                    <div class="group-4">
-                      <div class="div-wrapper"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
-                </div>
-                <img class="vector-6" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661532/bebom2uhkwkwy1d5ybla.svg" loading="lazy" />
+    <main class="app-shell">
+      <section class="hero" id="top">
+        <header class="topbar">
+          <a class="brand" href="#top" aria-label="TotalBody">
+            <span class="brand-mark">TB</span>
+            <span class="brand-text">TotalBody</span>
+          </a>
+          <nav class="quick-links" aria-label="Быстрые ссылки">
+            <button class="icon-button" type="button" data-link="telegramMain" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 4.7 17.9 20c-.2 1-.8 1.2-1.6.8l-4.5-3.4-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.8 8.7-7.8c.4-.4-.1-.6-.6-.2L6.4 13.9 1.7 12.4c-1-.3-1-1 0-1.4L19.7 4c.8-.3 1.5.2 1.3.7Z" />
+              </svg>
+            </button>
+            <button class="icon-button" type="button" data-link="whatsappVernadskogo" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a9.7 9.7 0 0 0-8.4 14.5L2.5 22l5.7-1.1A9.8 9.8 0 1 0 12 2Zm0 2a7.8 7.8 0 0 1 6.7 11.8l-.2.4.6 3.1-3.2-.6-.4.2A7.8 7.8 0 0 1 4.2 12 7.8 7.8 0 0 1 12 4Zm-3.1 3.9c-.2 0-.5.1-.8.4-.3.4-1 1.1-1 2.6s1.1 3 1.3 3.2c.2.2 2.1 3.3 5.2 4.5 2.5 1 3 .8 3.5.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.2-.3-.2-.7-.4l-1.9-.9c-.3-.1-.6-.2-.8.2l-.8 1c-.2.3-.4.3-.7.1-.4-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.2-.7l.5-.6c.2-.2.2-.4.4-.6.1-.2 0-.5 0-.6l-.9-2c-.3-.5-.6-.5-.8-.5h-.3Z" />
+              </svg>
+            </button>
+          </nav>
+        </header>
 
-                <img class="text-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661535/m6dvybd0l9yclhbttxkt.svg" loading="lazy" />
-                <p class="text-wrapper-5">
-                  Студия женского<br />
-                  фитнеса и растяжки
-                </p>
-                <div class="text-wrapper-6">Подбери занятия под себя</div>
-                <div class="rectangle-3"></div>
-                
-
-                <div class="frame-4">
-                        <div class="overlap-3">
-                          <img class="group-3" src="assets/demo-card.svg" loading="lazy" />
-                          <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy" />
-                          <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy" />
-                          <div class="group-4">
-                            <div class="div-wrapper"><div class="text-wrapper-2">Записаться</div></div>
-                          </div>
-                        </div>
-                </div>
-                <p class="text-wrapper-9">
-                  Запишись на пробное, и мы подберём лучшее направление под твои цели и состояние.
-                </p>
-                <p class="text-wrapper-10"> Не знаешь, с чего начать?</p>
-                <div class="text-wrapper-11">Социальные сети<br />и контакты</div>
-
-                <div class="text-wrapper-16">Отзывы</div>
-                <div class="reviews-container ">
-                  <div class="reviews-slider">
-                    <div class=" review-slide active">
-                      <div class="group-6">
-                        <div class="overlap-group-3">
-                          <div class="group-7">
-                            <img class="ellipse" src="assets/demo-avatar-a.svg" loading="lazy" />
-                            <img class="ellipse-2" src="assets/demo-avatar-b.svg" loading="lazy" />
-                          </div>
-                          <img class="ellipse-3" src="assets/demo-avatar-a.svg" loading="lazy" />
-                        </div>
-                      </div>
-                      <div class="text-wrapper-12">Анна</div>
-                      <p class="text-wrapper-13">
-                        Очень понравилось! Тренеры внимательные, атмосфера супер. Уже после первой тренировки почувствовала
-                        результат.
-                      </p>
-                      <div class="frame-6">
-                        <p class="element">
-                          <span class="span">5.0</span> <span class="text-wrapper-14">/5.0 Рейтинг</span>
-                        </p>
-                        <div class="frame-7">
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-slide">
-                      <div class="group-6">
-                        <div class="overlap-group-3">
-                          <div class="group-7">
-                            <img class="ellipse" src="assets/demo-avatar-b.svg" loading="lazy" />
-                            <img class="ellipse-2" src="assets/demo-avatar-b.svg" loading="lazy" />
-                          </div>
-                          <img class="ellipse-3" src="assets/demo-avatar-a.svg" loading="lazy" />
-                        </div>
-                      </div>
-                      <div class="text-wrapper-12">Мария</div>
-                      <p class="text-wrapper-13">
-                        Замечательная студия! Профессиональные тренеры, индивидуальный подход. Результат заметен уже через месяц.
-                      </p>
-                      <div class="frame-6">
-                        <p class="element">
-                          <span class="span">4.8</span> <span class="text-wrapper-14">/5.0 Рейтинг</span>
-                        </p>
-                        <div class="frame-7">
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-slide">
-                      <div class="group-6">
-                        <div class="overlap-group-3">
-                          <div class="group-7">
-                            <img class="ellipse" src="assets/demo-avatar-c.svg" loading="lazy" />
-                            <img class="ellipse-2" src="assets/demo-avatar-b.svg" loading="lazy" />
-                          </div>
-                          <img class="ellipse-3" src="assets/demo-avatar-a.svg" loading="lazy" />
-                        </div>
-                      </div>
-                      <div class="text-wrapper-12">Елена</div>
-                      <p class="text-wrapper-13">
-                        Прекрасное место для тренировок! Удобное расположение, современное оборудование, дружелюбная атмосфера.
-                      </p>
-                      <div class="frame-6">
-                        <p class="element">
-                          <span class="span">5.0</span> <span class="text-wrapper-14">/5.0 Рейтинг</span>
-                        </p>
-                        <div class="frame-7">
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                          <div class="star"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" loading="lazy" /></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img class="solar-arrow-left review-prev" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/dd9lremyfhqg72or5kfw.svg" loading="lazy" />
-                  <img class="solar-arrow-left-2 review-next" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/dd9lremyfhqg72or5kfw.svg" loading="lazy" />
-                </div>
-                <div class="text-wrapper-15">Галерея</div>
-                <div class="gallery-container">
-                  <div class="gallery-slider"></div>
-                  <img class="gallery-prev" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/dd9lremyfhqg72or5kfw.svg" loading="lazy" />
-                  <img class="gallery-next" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/dd9lremyfhqg72or5kfw.svg" loading="lazy" />
-                </div>
-                <div class="group-8">
-                  <div class="text-wrapper-17">Адреса студий в Москве</div>
-                  <div class="overlap-5">
-                    <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-18">Студия на Вернадского</div>
-                  </div>
-                  <div class="overlap-6">
-                    <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-19">Студия в Коммунарке</div>
-                  </div>
-                  <p class="element-2">
-                    <a href="geo:55.686320,37.524659" target="_blank" rel="noopener noreferrer"
-                      ><span class="text-wrapper-20">Москва, Вернадского 15<br /></span
-                    ></a>                    
-                  </p>
-                  <p class="element-3">
-                    <a href="geo:55.701320,37.564659" target="_blank" rel="noopener noreferrer"
-                      ><span class="text-wrapper-20">Москва, Скандинавский бульвар 2 корпус 6<br /></span
-                    ></a>
-                  </p>
-                  <div class="overlap-7">
-                    <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-22">Студия на Вершинина</div>
-                  </div>
-                  <img class="vector-10" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/tsz0d3qyu13cjsbohtra.svg" loading="lazy" />
-                  <p class="element-4">
-                    <a href="geo:55.761320,37.604659" target="_blank" rel="noopener noreferrer"
-                      ><span class="text-wrapper-20">Москва, ул. Маршала Вершинина 10<br /></span
-                    ></a>
-
-                  </p>
-                  <img class="logos-telegram" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/mkqbgxnvdlfijttlc5ih.svg" loading="lazy" />
-                  <img class="logos-whatsapp-icon" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/pvggm2gwfyuit2jubu2e.svg" loading="lazy" />
-                  <img class="logos-telegram-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/mkqbgxnvdlfijttlc5ih.svg" loading="lazy" />
-                  <img class="logos-whatsapp-icon-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/pvggm2gwfyuit2jubu2e.svg" loading="lazy" />
-                  <img class="logos-telegram-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/mkqbgxnvdlfijttlc5ih.svg" loading="lazy" />
-                  <img class="logos-whatsapp-icon-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/pvggm2gwfyuit2jubu2e.svg" loading="lazy" />
-                </div>
-                <div class="group-9">
-                  <div class="overlap-8">
-                    <img class="logos-telegram-4" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/mkqbgxnvdlfijttlc5ih.svg" loading="lazy" />
-                    <div class="text-wrapper-23">Мы в Telegram</div>
-                  </div>
-                  <div class="overlap-9">
-                    <div class="text-wrapper-23">Мы в Вконтакте</div>
-                    <img class="vector-11" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/ifnpgrkp0sdzhej9lgxi.svg" loading="lazy" />
-                  </div>
-                </div>
-                <div class="text-wrapper-24">Виды тренировок</div>
-                <img class="logos-telegram-5" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/mkqbgxnvdlfijttlc5ih.svg" loading="lazy" />
-                <img class="logos-whatsapp-icon-4" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/pvggm2gwfyuit2jubu2e.svg" loading="lazy" />
-                <div class="group-10">
-                  <div class="overlap-10">
-                    <img class="vector-12" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-25">Студия на Вернадского, 15</div>
-                  </div>
-                </div>
-                <img class="vector-13" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/toyf0oizj701140ivxfs.svg" loading="lazy" />
-              </div>
-             
-              <div class="text-wrapper-29">ПОЛУЧИ</div>
-              <div class="text-wrapper-30">при скачивании приложения</div>
-              <div class="group-12">
-                <div class="group-wrapper">
-                  <div class="group-13">
-                    <div class="overlap-group-5">
-                      <div class="rectangle-4"></div>
-                      <div class="text-wrapper-31">Скачать приложение</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="group-14">
-              <div class="overlap-11">
-                <div class="group-15">
-                  <img class="shape-with-text-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661526/hvrgjwyhjdgsxyneat5d.svg" loading="lazy" />
-                  <div class="overlap-group-6">
-                    <img class="vector-14" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661525/syrwurmm0ec5puykcbqc.svg" loading="lazy" />
-                    <div class="text-wrapper-32">500</div>
-                  </div>
-                </div>
-                <div class="group-16"><div class="text-wrapper-33">БАЛОВ</div></div>
-              </div>
-            </div>
-            <div class="group-17">
-              <div class="frame-9">
-                <div class="overlap-12">
-                  <div class="overlap-13">
-                    <img class="group-18" src="assets/demo-card.svg" loading="lazy" />
-                    <div class="text-wrapper-34">Силовые<br />и кардио-тренировки</div>
-                    <p class="div-2">
-                      <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                      <span class="text-wrapper-36"
-                        ><br />— подтянуть тело<br />— сбросить напряжение через активность<br />— почувствовать энергию
-                        и контроль над своим телом</span
-                      >
-                    </p>
-                    <p class="text-wrapper-37">🔥 Форматы: функциональный фитнес, женские круговые, кардио-миксы</p>
-                  </div>
-                  <div class="group-19">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                  <div class="ic-round-sports">
-                    <div class="icon-park-outline"><img class="group-20" src="assets/demo-card.svg" loading="lazy" /></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-14">
-                <div class="frame-10">
-                  <div class="overlap-15">
-                    <div class="overlap-16">
-                      <img class="group-21" src="assets/demo-card.svg" loading="lazy" />
-                      <p class="div-3">
-                        <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                        <span class="text-wrapper-36"
-                          ><br />— отпустить тревожность и восстановиться<br />— улучшить осанку и дыхание<br />—
-                          разгрузить тело после сидячей работы</span
-                        >
-                      </p>
-                      <p class="text-wrapper-38">🔥 Форматы: хатха, аэройога в гамаках, дыхательные практики</p>
-                    </div>
-                    <div class="text-wrapper-39">Йога<br />и аэройога</div>
-                    <div class="group-22">
-                      <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mdi-yoga-wrapper"><img class="mdi-yoga" src="assets/demo-card.svg" loading="lazy" /></div>
-              </div>
-              <div class="overlap-17">
-                <div class="frame-10">
-                  <div class="overlap-15">
-                    <div class="overlap-16">
-                      <img class="group-21" src="assets/demo-card.svg" loading="lazy" />
-                      <p class="div-3">
-                        <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                        <span class="text-wrapper-36"
-                          ><br />— стать гибкой без насилия над собой<br />— снять напряжение в спине и шее<br />—
-                          научиться слышать своё тело</span
-                        >
-                      </p>
-                      <p class="text-wrapper-38">🔥 Форматы: стретчинг, шпагаты, мягкое вытяжение</p>
-                    </div>
-                    <div class="text-wrapper-39">Растяжка и мягкие тренировки</div>
-                    <div class="group-22">
-                      <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="material-symbols-wrapper">
-                  <img class="material-symbols" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661531/lkzwquas0k6wuajf4sws.svg" loading="lazy" />
-                </div>
-              </div>
-              <div class="overlap-18">
-                <div class="frame-11">
-                  <div class="overlap-19">
-                    <div class="overlap-20">
-                      <img class="group-23" src="assets/demo-card.svg" loading="lazy" />
-                      <p class="div-4">
-                        <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                        <span class="text-wrapper-36"
-                          ><br />— раскрыть женственность и тело<br />— почувствовать уверенность в движении<br />—
-                          прокачать пластику и наслаждаться собой</span
-                        >
-                      </p>
-                      <p class="text-wrapper-38">🔥 Форматы: high heels, strip plastic, frame up</p>
-                    </div>
-                    <div class="text-wrapper-39">Танцевальные направления</div>
-                    <div class="group-24">
-                      <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mdi-dance-pole-wrapper"><img class="mdi-dance-pole" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661531/xwur1dfdlcthbbzri6fo.svg" loading="lazy" /></div>
-              </div>
-            </div>
-            <img class="shape-with-text-4" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/fi4a0hrovmrlyyvzdpxg.svg" loading="lazy" />
-            <img class="vector-15" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661525/g0m5v3hjdb8z01puhdi0.svg" loading="lazy" />
-            <img class="vector-16" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661535/nxyaib2t70lfdyraieog.svg" loading="lazy" />
-            <div class="text-wrapper-40">о нас</div>
-            <img class="vector-17" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661531/anmxvpi4mtcuq6xujy67.svg" loading="lazy" />
-            <div class="text-wrapper-41">Важное</div>
-            <div class="vazhnoe-items-container">
-              <div class="group-25">
-                <div class="overlap-21">
-                  <img class="ic-round-sports-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661531/pp7jlei7whan8qn3r7dn.svg" loading="lazy" />
-                  <div class="text-wrapper-42">Тренеры</div>
-                </div>
-              </div>
-              <div class="group-26">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3">
-                    <img class="fluent-calendar" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661530/td2p0tbl6gnivacuxcgl.svg" loading="lazy" />
-                  </div>
-                  <div class="text-wrapper-42">Расписание</div>
-                </div>
-              </div>
-              <div class="group-29">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3">
-                    <img class="icomoon-free-price" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661530/boogcw2drhoru61rzu0j.svg" loading="lazy" />
-                  </div>
-                  <div class="text-wrapper-42">Наши цены</div>
-                </div>
-              </div>
-              <div class="group-30">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3">
-                    <div class="overlap-group-7">
-                      <div class="mingcute-telegram"><img class="group-31" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/mkqbgxnvdlfijttlc5ih.svg" loading="lazy" /></div>
-                      <img class="mdi-video" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661530/tev6mluem8g5wy7ezqs3.svg" loading="lazy" />
-                    </div>
-                  </div>
-                  <div class="text-wrapper-42">Видео</div>
-                </div>
-              </div>
-            </div>
-            <div class="text-wrapper-43">Полезное</div>
-            <div class="poleznoe-items-container">
-              <div class="group-27">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3"><img class="mdi-faq" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661529/wb0336kxxadba7hqfowm.svg" loading="lazy" /></div>
-                  <div class="text-wrapper-42">FAQ</div>
-                </div>
-              </div>
-              <div class="group-28">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3"><img class="bxs-map" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661529/u8o5vndsfwxhld6qwpb7.svg" loading="lazy" /></div>
-                  <div class="text-wrapper-42">Как нас найти?</div>
-                </div>
-              </div>
-              <div class="group-32">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3">
-                    <img class="ic-baseline-app" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/al30vpiiayfximbymd8l.svg" loading="lazy" />
-                  </div>
-                  <div class="text-wrapper-46">Мобильное <br>приложение</div>
-                </div>
-              </div>
-              <div class="group-33" onclick="window.open('https://t.me/total_body_ver', '_blank')" style="cursor: pointer;">
-                <div class="overlap-21">
-                  <div class="ic-round-sports-3">
-                    <div class="mingcute-telegram-2"><img class="group-34" src="assets/demo-avatar-a.svg" loading="lazy" /></div>
-                  </div>
-                  <div class="text-wrapper-42">TG канал</div>
-                </div>
-              </div>
-            </div>
-            <div class="text-wrapper-44">Выбери своё направление</div>
-            <p class="text-wrapper-45">тренировка, которая подойдёт именно тебе</p>
-            <div class="training-items-container">
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Растяжка</div>
-                  <p class="text-wrapper-8">Гибкость, снятие напряжения, лёгкость в теле.</p>
-                  <button class="more-info-btn" data-type="stretching">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Аэройога</div>
-                  <p class="text-wrapper-8">Гамак, гибкость, разгрузка спины, гармония тела и души.</p>
-                  <button class="more-info-btn" data-type="aerial">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Пилатес</div>
-                  <p class="text-wrapper-8">Глубокие мышцы, осанка, баланс, мягкая забота о теле.</p>
-                  <button class="more-info-btn" data-type="pilates">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Strip Plastic</div>
-                  <p class="text-wrapper-8">Танец, пластика, женственность, уверенность, гибкость.</p>
-                  <button class="more-info-btn" data-type="strip">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Здоровая спина</div>
-                  <p class="text-wrapper-8">Сильная спина, снятие боли, гибкость, профилактика проблем.</p>
-                  <button class="more-info-btn" data-type="back">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Хатха-йога</div>
-                  <p class="text-wrapper-8">Асаны, дыхание, баланс, гибкость, спокойствие ума.</p>
-                  <button class="more-info-btn" data-type="hatha">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="overlap-group-wrapper">
-                <div class="overlap-4">
-                  <img class="group-3" src="assets/demo-card.svg" loading="lazy">
-                  <img class="rectangle-2" src="assets/demo-card.svg" loading="lazy">
-                  <img class="frame-3" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/mpurqblcsakg6dwoy73x.svg" loading="lazy">
-                  <img class="vector-5" src="assets/demo-avatar-c.svg" loading="lazy">
-                  <div class="text-wrapper-7">Фитнес-аэробика</div>
-                  <p class="text-wrapper-8">Кардио, энергия, сжигание калорий, координация, позитив.</p>
-                  <button class="more-info-btn" data-type="aerobics">Подробнее</button>
-                  <div class="group-5">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                </div>
-              </div>
+        <div class="hero-grid">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">Студия на Вернадского, 15</p>
+            <h1>TotalBody</h1>
+            <p class="hero-lead">
+              Женский фитнес, растяжка и мягкие тренировки в формате, где легко выбрать направление и записаться на пробное.
+            </p>
+            <div class="hero-actions">
+              <button class="button button-primary" type="button" data-action="signup">
+                Записаться на пробное
+              </button>
+              <a class="button button-secondary" href="#directions">Выбрать направление</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    
-    <div class="modal-coaches" style="display:none;">
-      <div class="modal-coaches__backdrop"></div>
-      <div class="modal-coaches__content">
-        <button class="modal-coaches__close">&times;</button>
-        <div class="coaches-slider">
-          <div class="coach-slide">
-            <div class="coach-info">
-              <div class="coach-photo-container">
-                <img class="coach-photo" src="" alt="">
-              </div>
-              <div class="coach-details">
-                <h3 class="coach-name"></h3>
-                <p class="coach-desc"></p>
-              </div>
-            </div>
-            <div class="coaches-nav">
-              <button class="coaches-prev">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <div class="coach-counter"></div>
-              <button class="coaches-next">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
+          <div class="hero-visual" aria-hidden="true" data-reveal>
+            <img src="assets/demo-hero.svg" alt="" />
+            <div class="hero-badge">500 бонусов</div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="modal-schedule" style="display:none;">
-      <div class="modal-schedule__backdrop"></div>
-      <div class="modal-schedule__content">
-        <iframe src="https://example.com/booking-widget" frameborder="0" class="schedule-iframe"></iframe>
-        <button class="modal-schedule__close">&times;</button>
-      </div>
-    </div>
-    <div class="modal-prices" style="display:none;">
-      <div class="modal-prices__backdrop"></div>
-      <div class="modal-prices__content">
-        <button class="modal-prices__close">&times;</button>
-        <div class="prices-slider"></div>
-        <div class="prices-nav">
-          <button class="prices-prev">&#8592;</button>
-          <button class="prices-next">&#8594;</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Модальное окно Видео -->
-    <div class="modal-video" style="display: none;">
-        <div class="modal-video__backdrop"></div>
-        <div class="modal-video__content">
-            <button class="modal-video__close">&times;</button>
-            <img class="video-player" src="assets/demo-gallery-1.svg" alt="Видео демо" loading="lazy">
+        <div class="trust-strip" data-reveal>
+          <div>
+            <strong>3</strong>
+            <span>студии в Москве</span>
+          </div>
+          <div>
+            <strong>20</strong>
+            <span>тренеров</span>
+          </div>
+          <div>
+            <strong>8</strong>
+            <span>направлений</span>
+          </div>
         </div>
-    </div>
+      </section>
 
-    <!-- Модальное окно FAQ -->
-    <div class="modal-faq" style="display: none;">
-        <div class="modal-faq__backdrop"></div>
-        <div class="modal-faq__content">
-            <button class="modal-faq__close">&times;</button>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">Какие у вас есть абонементы?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        В нашей студии вы можете выбрать абонемент, который подходит именно вам:
-                        <br /><br />
-                        — на 8 занятий<br />
-                        — на 12 занятий<br />
-                        — на 16 занятий<br />
-                        — на 24 занятия
-                        <br /><br />
-                        Каждый абонемент включает возможность заморозки и гостевые визиты, чтобы вы могли тренироваться с комфортом и делиться любимыми занятиями с близкими.
-                        <br /><br />
-                        Подробнее о стоимости и условиях — в разделе «Цены».
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Что взять с собой на тренировку?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Удобную спортивную форму (лосины/топ), бутылочку для воды и хорошее настроение. Всё остальное (коврики, оборудование, гамаки) предоставляется в студии.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Как записаться и где посмотреть расписание?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Вы можете записаться на пробное занятие через demo booking widget (<a href="https://example.com/booking-widget" target="_blank">https://example.com/booking-widget</a>). Или оставить заявку, и мы вместе подберём для вас оптимальное занятие и время.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Есть ли подарочные сертификаты?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Да, у нас есть подарочные сертификаты на любую сумму или определённое количество занятий. Отличный вариант для заботливого подарка.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Какое направление мне подойдёт?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Мы подскажем! Все будет зависеть от вашей цели, уровня подготовки и личных предпочтений.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Разбивка платежа — это кредит?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Нет, это удобная система оплаты через сервис Яндекс Сплит — вы можете платить за абонемент частями, без процентов и без оформления кредита.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Если я не успею посетить все занятия, они сгорят?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Нет. Мы можем перенести занятия или заморозить абонемент по уважительной причине. Нам важно, чтобы вы занимались комфортно и без давления.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Могу ли я привести подругу по своему абонементу?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        В каждом абонементе включены гостевые визиты, по которым вы можете привести своих подруг бесплатно
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Как мне купить абонемент дешевле?<span class="faq-arrow">&#9660;</span></div>
-                    <p class="faq-answer">
-                        Вы можете воспользоваться акцией "Приведи подругу и получи 2000 рублей". За каждую подругу, купившую абонемент вам на счёт начисляется 2000 рублей.
-                    </p>
-                </div>
+      <section class="section offer-section" id="trial">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Первый шаг</p>
+          <h2>Пробное занятие с подбором направления</h2>
+          <p>
+            Администратор поможет выбрать тренировку под цель, уровень подготовки и удобную студию.
+          </p>
+        </div>
+        <article class="feature-card feature-card-dark" data-reveal>
+          <img src="assets/demo-card.svg" alt="" />
+          <div>
+            <span class="tag">Подарок новым клиентам</span>
+            <h3>500 бонусов после записи</h3>
+            <p>Можно использовать на следующие занятия, абонемент или подарок подруге.</p>
+            <button class="button button-light" type="button" data-action="signup">Получить бонусы</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="directions">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Направления</p>
+          <h2>Выбери тренировку под состояние сегодня</h2>
+        </div>
+        <div class="direction-tabs" role="tablist" aria-label="Направления тренировок" data-reveal></div>
+        <div class="direction-panel" data-reveal>
+          <div class="direction-media">
+            <img id="directionImage" src="assets/demo-gallery-1.svg" alt="" />
+          </div>
+          <div class="direction-content">
+            <span class="tag" id="directionMood">Гибкость</span>
+            <h3 id="directionTitle">Растяжка</h3>
+            <p id="directionText"></p>
+            <ul id="directionBenefits"></ul>
+            <button class="button button-primary" type="button" data-action="signup">Записаться</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section studio-section">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Комфорт</p>
+          <h2>Каждый блок ведет к понятному действию</h2>
+          <p>
+            Клиент видит пользу, выбирает направление, задает вопрос и сразу оставляет заявку в Telegram.
+          </p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit-card" data-reveal>
+            <span class="benefit-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10v3h3v17H4V5h3V2Zm2 3h6V4H9v1Zm-3 5h12V7H6v3Zm0 10h12v-8H6v8Z" />
+              </svg>
+            </span>
+            <h3>Запись без лишних шагов</h3>
+            <p>Кнопка записи всегда рядом, а сообщение для администратора формируется автоматически.</p>
+          </article>
+          <article class="benefit-card" data-reveal>
+            <span class="benefit-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2 14.9 8l6.6.9-4.8 4.7 1.1 6.5L12 17l-5.8 3.1 1.1-6.5L2.5 8.9 9.1 8 12 2Z" />
+              </svg>
+            </span>
+            <h3>Акции выглядят заметно</h3>
+            <p>Бонусы, пробные занятия и абонементы вынесены в отдельные продающие блоки.</p>
+          </article>
+          <article class="benefit-card" data-reveal>
+            <span class="benefit-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 1 7 7c0 5.2-7 13-7 13S5 14.2 5 9a7 7 0 0 1 7-7Zm0 9.5A2.5 2.5 0 1 0 12 6a2.5 2.5 0 0 0 0 5.5Z" />
+              </svg>
+            </span>
+            <h3>Контакты не теряются</h3>
+            <p>Адреса, Telegram и WhatsApp доступны из первого экрана и финального блока.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Тренеры</p>
+          <h2>Поддержка и внимание на каждом занятии</h2>
+        </div>
+        <div class="coach-slider" data-reveal>
+          <button class="slider-arrow" type="button" data-coach-prev aria-label="Предыдущий тренер">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4 7.5 12l8 8 1.4-1.4-6.6-6.6 6.6-6.6L15.5 4Z" /></svg>
+          </button>
+          <article class="coach-card">
+            <img id="coachImage" src="assets/demo-coach.svg" alt="" />
+            <div>
+              <span class="tag" id="coachRole">Stretching</span>
+              <h3 id="coachName"></h3>
+              <p id="coachText"></p>
             </div>
+          </article>
+          <button class="slider-arrow" type="button" data-coach-next aria-label="Следующий тренер">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 4 8 8-8 8-1.4-1.4 6.6-6.6-6.6-6.6L8.5 4Z" /></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="section reviews-section">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Отзывы</p>
+          <h2>Клиенты возвращаются за ощущением легкости</h2>
+        </div>
+        <div class="review-card" data-reveal>
+          <div class="review-avatars">
+            <img src="assets/demo-avatar-a.svg" alt="" />
+            <img src="assets/demo-avatar-b.svg" alt="" />
+            <img src="assets/demo-avatar-c.svg" alt="" />
+          </div>
+          <p id="reviewText"></p>
+          <div class="review-footer">
+            <strong id="reviewName"></strong>
+            <span id="reviewRating"></span>
+          </div>
+          <div class="review-controls">
+            <button class="dot active" type="button" data-review="0" aria-label="Отзыв 1"></button>
+            <button class="dot" type="button" data-review="1" aria-label="Отзыв 2"></button>
+            <button class="dot" type="button" data-review="2" aria-label="Отзыв 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Вопросы</p>
+          <h2>Перед первым занятием</h2>
+        </div>
+        <div class="faq-list" data-reveal></div>
+      </section>
+
+      <section class="section contact-section" id="contacts">
+        <div class="contact-card" data-reveal>
+          <div>
+            <p class="eyebrow">Контакты</p>
+            <h2>Готова попробовать?</h2>
+            <p>Оставь заявку, и администратор подберет направление, студию и удобное время.</p>
+          </div>
+          <img src="assets/demo-map.svg" alt="Карта студий TotalBody" />
+          <div class="contact-actions">
+            <button class="button button-primary" type="button" data-action="signup">Записаться</button>
+            <button class="button button-secondary" type="button" data-link="telegramVernadskogo">Написать в Telegram</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="sticky-cta" data-sticky>
+      <div>
+        <strong>Пробное занятие</strong>
+        <span>500 бонусов после записи</span>
       </div>
-    </div>
-
-    <!-- Модальное окно Как нас найти -->
-    <div class="modal-how-to-find" style="display: none;">
-        <div class="modal-how-to-find__backdrop"></div>
-        <div class="modal-how-to-find__content">
-            <button class="modal-how-to-find__close">&times;</button>
-            <div class="how-to-find-slider">
-                <div class="how-to-find-slide">
-                    <img class="how-to-find-image" src="assets/demo-gallery-2.svg" alt="Как нас найти" loading="lazy">
-                </div>
-                <div class="how-to-find-slide">
-                    <img class="how-to-find-image" src="assets/demo-map.svg" alt="Как нас найти" loading="lazy">
-                </div>
-            </div>
-            <button class="how-to-find-prev">&#8592;</button>
-            <button class="how-to-find-next">&#8594;</button>
-        </div>
-    </div>
-
-    <!-- Модальное окно О нас -->
-    <div class="modal-about" style="display: none;">
-        <div class="modal-about__backdrop"></div>
-        <div class="modal-about__content">
-            <button class="modal-about__close">&times;</button>
-            <h2 class="about-title">О студии Total Body</h2>
-            <div class="about-main-text">
-                <p> <b>Total Body</b> – это большая семья из 20 профессиональных инструкторов, 4-ех приятных администраторов и открытого руководства студии.</p>
-                <p>Наша цель – сделать каждого клиента своим другом, помочь ему быть более счастливым, красивым и уверенным в себе. Сделать спорт частью его жизни в любом возрасте.</p>
-            </div>
-            <div class="about-mission-block">
-                <h3 class="about-mission-title">Наша миссия</h3>
-                <ul class="about-mission-list">
-                    <li class="about-mission-item">Делаем стройность и красоту такими же простыми и естественными, как улыбка.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Модальное окно подробной информации о тренировке -->
-    <div class="modal-training-info" style="display: none;">
-        <div class="modal-training-info__backdrop"></div>
-        <div class="modal-training-info__content">
-            <button class="modal-training-info__close">&times;</button>
-            <div class="modal-training-info__body"></div>
-        </div>
+      <button class="button button-primary" type="button" data-action="signup">Записаться</button>
     </div>
   </body>
 </html>
