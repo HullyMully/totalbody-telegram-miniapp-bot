@@ -8,9 +8,9 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css?v=20260711" />
+    <link rel="stylesheet" href="style.css?v=20260711-modern" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js?v=20260711" defer></script>
+    <script src="app.js?v=20260711-modern" defer></script>
   </head>
   <body>
     <div class="app">
@@ -165,33 +165,33 @@
                   <img class="gallery-next" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/dd9lremyfhqg72or5kfw.svg" loading="lazy" />
                 </div>
                 <div class="group-8">
-                  <div class="text-wrapper-17">Адреса студий в Москве</div>
+                  <div class="text-wrapper-17">Demo-адрес студии</div>
                   <div class="overlap-5">
                     <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-18">Студия на Вернадского</div>
+                    <div class="text-wrapper-18">Студия у Цветного бульвара</div>
                   </div>
                   <div class="overlap-6">
                     <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-19">Студия в Коммунарке</div>
+                    <div class="text-wrapper-19">Метро в 5 минутах</div>
                   </div>
                   <p class="element-2">
-                    <a href="geo:55.686320,37.524659" target="_blank" rel="noopener noreferrer"
-                      ><span class="text-wrapper-20">Москва, Вернадского 15<br /></span
+                    <a href="geo:55.771200,37.620800" target="_blank" rel="noopener noreferrer"
+                      ><span class="text-wrapper-20">Москва, Цветной бульвар, 15<br /></span
                     ></a>                    
                   </p>
                   <p class="element-3">
-                    <a href="geo:55.701320,37.564659" target="_blank" rel="noopener noreferrer"
-                      ><span class="text-wrapper-20">Москва, Скандинавский бульвар 2 корпус 6<br /></span
+                    <a href="geo:55.771200,37.620800" target="_blank" rel="noopener noreferrer"
+                      ><span class="text-wrapper-20">Ориентир: Садовое кольцо<br /></span
                     ></a>
                   </p>
                   <div class="overlap-7">
                     <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-22">Студия на Вершинина</div>
+                    <div class="text-wrapper-22">Demo-локация</div>
                   </div>
                   <img class="vector-10" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/tsz0d3qyu13cjsbohtra.svg" loading="lazy" />
                   <p class="element-4">
-                    <a href="geo:55.761320,37.604659" target="_blank" rel="noopener noreferrer"
-                      ><span class="text-wrapper-20">Москва, ул. Маршала Вершинина 10<br /></span
+                    <a href="geo:55.771200,37.620800" target="_blank" rel="noopener noreferrer"
+                      ><span class="text-wrapper-20">Вход со стороны бульвара<br /></span
                     ></a>
 
                   </p>
@@ -218,7 +218,7 @@
                 <div class="group-10">
                   <div class="overlap-10">
                     <img class="vector-12" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-25">Студия на Вернадского, 15</div>
+                    <div class="text-wrapper-25">Demo-студия у Цветного бульвара</div>
                   </div>
                 </div>
                 <img class="vector-13" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/toyf0oizj701140ivxfs.svg" loading="lazy" />
@@ -659,16 +659,23 @@
         <div class="modal-how-to-find__backdrop"></div>
         <div class="modal-how-to-find__content">
             <button class="modal-how-to-find__close">&times;</button>
-            <div class="how-to-find-slider">
-                <div class="how-to-find-slide">
-                    <img class="how-to-find-image" src="assets/demo-gallery-2.svg" alt="Как нас найти" loading="lazy">
+            <div class="how-to-find-modern">
+                <div class="how-to-find-map-card">
+                    <iframe
+                        class="how-to-find-map"
+                        title="Demo-локация на карте"
+                        src="about:blank"
+                        data-src="https://www.openstreetmap.org/export/embed.html?bbox=37.6118%2C55.7671%2C37.6298%2C55.7753&amp;layer=mapnik&amp;marker=55.7712%2C37.6208"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="how-to-find-slide">
-                    <img class="how-to-find-image" src="assets/demo-map.svg" alt="Как нас найти" loading="lazy">
+                <div class="how-to-find-card">
+                    <span class="how-to-find-kicker">Demo-локация</span>
+                    <h2>Студия у Цветного бульвара</h2>
+                    <p>Москва, Цветной бульвар, 15. 5 минут пешком от метро, вход со стороны бульвара.</p>
+                    <a class="how-to-find-route" href="https://www.openstreetmap.org/?mlat=55.7712&amp;mlon=37.6208#map=17/55.7712/37.6208" target="_blank" rel="noopener noreferrer">Открыть маршрут</a>
                 </div>
             </div>
-            <button class="how-to-find-prev">&#8592;</button>
-            <button class="how-to-find-next">&#8594;</button>
         </div>
     </div>
 

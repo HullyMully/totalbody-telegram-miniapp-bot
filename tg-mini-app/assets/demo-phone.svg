@@ -1,9 +1,20 @@
 <svg width="420" height="640" viewBox="0 0 420 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="420" height="640" rx="48" fill="#F0E6DA"/>
-  <rect x="44" y="58" width="332" height="524" rx="36" fill="#FFFFFF"/>
-  <circle cx="320" cy="140" r="52" fill="#FF6847"/>
-  <path d="M94 390C154 282 238 218 350 198" stroke="#900C3F" stroke-width="26" stroke-linecap="round"/>
-  <circle cx="128" cy="174" r="30" fill="#900C3F"/>
-  <path d="M102 462H306" stroke="#E5D2C3" stroke-width="16" stroke-linecap="round"/>
-  <path d="M102 508H254" stroke="#E5D2C3" stroke-width="16" stroke-linecap="round"/>
+  <rect x="34" y="18" width="352" height="604" rx="54" fill="#20171B"/>
+  <rect x="52" y="48" width="316" height="544" rx="38" fill="#FFFDFC"/>
+  <rect x="152" y="34" width="116" height="18" rx="9" fill="#20171B"/>
+  <rect x="74" y="78" width="272" height="144" rx="28" fill="#900C3F"/>
+  <circle cx="292" cy="112" r="42" fill="#FF6847"/>
+  <path d="M98 178C144 126 204 106 292 112" stroke="#F0E6DA" stroke-width="14" stroke-linecap="round"/>
+  <text x="96" y="122" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="700">TotalBody</text>
+  <text x="96" y="154" fill="#F0E6DA" font-family="Arial, sans-serif" font-size="15" font-weight="700">занятия и абонементы</text>
+  <rect x="74" y="244" width="126" height="92" rx="24" fill="#F0E6DA"/>
+  <rect x="220" y="244" width="126" height="92" rx="24" fill="#FFF1E8"/>
+  <circle cx="132" cy="290" r="24" fill="#900C3F"/>
+  <circle cx="280" cy="290" r="24" fill="#FF6847"/>
+  <rect x="74" y="366" width="272" height="42" rx="21" fill="#F0E6DA"/>
+  <rect x="94" y="379" width="146" height="16" rx="8" fill="#CDBAAE"/>
+  <rect x="74" y="430" width="272" height="42" rx="21" fill="#F0E6DA"/>
+  <rect x="94" y="443" width="188" height="16" rx="8" fill="#CDBAAE"/>
+  <rect x="74" y="504" width="272" height="58" rx="29" fill="#900C3F"/>
+  <text x="143" y="540" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="20" font-weight="700">Открыть demo</text>
 </svg>

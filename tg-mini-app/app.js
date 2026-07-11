@@ -110,23 +110,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => updateActiveCard(trainingContainer, trainingItems));
     window.addEventListener('resize', () => updateActiveCard(trainingContainer, trainingItems));
 
-    // --- Новый слайдер отзывов с apple-style анимацией ---
+    // --- Слайдер отзывов ---
     const reviews = [
         {
             name: "Анна",
-            text: "Очень понравилось! Тренеры внимательные, атмосфера супер. Уже после первой тренировки почувствовала результат.",
+            text: "Понравилось, что тренер сразу понял мой уровень. После занятий меньше напряжения в спине и стало легче двигаться.",
             rating: 5,
             avatar: "assets/demo-avatar-a.svg",
         },
         {
             name: "Екатерина",
-            text: "Профессиональные тренеры, индивидуальный подход. Результат заметен уже через месяц.",
+            text: "Удобная запись, спокойная атмосфера и понятная нагрузка. Не страшно приходить после долгого перерыва.",
             rating: 4.8,
             avatar: "assets/demo-avatar-b.svg",
         },
         {
             name: "Виктория",
-            text: "Очень уютная студия, современное оборудование, дружелюбная атмосфера.",
+            text: "Люблю мини-группы: тренер успевает поправить технику, а занятие проходит мягко и без давления.",
             rating: 5,
             avatar: "assets/demo-avatar-c.svg",
         },
@@ -138,41 +138,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = reviewsContainer.querySelector('.review-next');
     let currentSlide = 0;
 
-    function renderCarousel(centerIdx, animation = null, direction = 1) {
-        // Очищаем слайдер
+    function renderCarousel(centerIdx, animation = null) {
         slider.innerHTML = '';
-        // Создаём новый слайд
-        const leftIdx = (centerIdx - 1 + reviews.length) % reviews.length;
-        const rightIdx = (centerIdx + 1) % reviews.length;
         const centerReview = reviews[centerIdx];
         const slide = document.createElement('div');
         slide.className = 'review-slide active';
         slide.innerHTML = `
-          <div class="review-avatars">
-            <div class="avatar-side-wrap">
-              <img class="avatar-side" src="${reviews[leftIdx].avatar}" alt="${reviews[leftIdx].name}">
+            <div class="review-card-head">
+                <img class="avatar-center" src="${centerReview.avatar}" alt="${centerReview.name}">
+                <div>
+                    <div class="avatar-name-center">${centerReview.name}</div>
+                    <div class="review-card-subtitle">клиент demo-студии</div>
+                </div>
             </div>
-            <div class="avatar-center-wrap">
-              <img class="avatar-center" src="${centerReview.avatar}" alt="${centerReview.name}">
+            <p class="text-wrapper-13">${centerReview.text}</p>
+            <div class="review-rating-row">
+                <p class="element"><span class="span">${centerReview.rating.toFixed(1)}</span><span class="text-wrapper-14"> / 5.0</span></p>
+                <div class="frame-7" aria-label="Рейтинг ${centerReview.rating.toFixed(1)} из 5">
+                    ${[1,2,3,4,5].map(i => `<span class="review-star${i <= Math.round(centerReview.rating) ? '' : ' empty'}">★</span>`).join('')}
+                </div>
             </div>
-            <div class="avatar-side-wrap">
-              <img class="avatar-side" src="${reviews[rightIdx].avatar}" alt="${reviews[rightIdx].name}">
+            <div class="review-dots">
+                ${reviews.map((_, i) => `<span class="review-dot${i === centerIdx ? ' active' : ''}"></span>`).join('')}
             </div>
-          </div>
-          <div class="avatar-name-center">${centerReview.name}</div>
-          <p class="text-wrapper-13">${centerReview.text}</p>
-            <div class="frame-6">
-              <p class="element">
-              <span class="span">${centerReview.rating.toFixed(1)}</span><span class="text-wrapper-14">/5.0 Рейтинг</span>
-              </p>
-              <div class="frame-7">
-              ${[1,2,3,4,5].map(i => `<div class="star${i <= Math.round(centerReview.rating) ? '' : ' empty'}"><img class="star-2" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661527/vu4h4ap3fotdxhmjp8v7.svg" /></div>`).join('')}
-            </div>
-          </div>
         `;
         if (animation) {
             slide.classList.add(animation);
-            // После анимации убираем класс
             slide.addEventListener('animationend', () => {
                 slide.classList.remove(animation);
             }, { once: true });
@@ -191,17 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const oldSlide = slider.querySelector('.review-slide');
         let outClass = direction === 1 ? 'slide-out-left' : 'slide-out-right';
         let inClass = direction === 1 ? 'slide-in-right' : 'slide-in-left';
-        // Анимация ухода старого слайда
         oldSlide.classList.add(outClass);
-        // После ухода старого слайда рендерим новый с анимацией входа
         oldSlide.addEventListener('animationend', () => {
             if (direction === 1) {
                 currentSlide = (currentSlide + 1) % reviews.length;
             } else {
                 currentSlide = (currentSlide - 1 + reviews.length) % reviews.length;
             }
-            renderCarousel(currentSlide, inClass, direction);
-            // После входа нового слайда убираем анимацию и разрешаем новые клики
+            renderCarousel(currentSlide, inClass);
             const newSlide = slider.querySelector('.review-slide');
             newSlide.addEventListener('animationend', () => {
                 newSlide.classList.remove(inClass);
@@ -213,12 +201,28 @@ document.addEventListener('DOMContentLoaded', () => {
     prevButton.addEventListener('click', () => moveCarousel(-1));
     nextButton.addEventListener('click', () => moveCarousel(1));
 
-    // --- Галерея слайдер ---
+    // --- Галерея ---
     const galleryImages = [
-        'assets/demo-gallery-1.svg',
-        'assets/demo-gallery-2.svg',
-        'assets/demo-gallery-3.svg',
-        'assets/demo-gallery-4.svg',
+        {
+            src: 'assets/demo-gallery-1.svg',
+            title: 'Зал для растяжки',
+            text: 'Светлое пространство, коврики и мягкая зона для разминки.',
+        },
+        {
+            src: 'assets/demo-gallery-2.svg',
+            title: 'Зона пилатеса',
+            text: 'Мини-группы, инвентарь под рукой и спокойный темп занятия.',
+        },
+        {
+            src: 'assets/demo-gallery-3.svg',
+            title: 'Аэройога',
+            text: 'Гамаки, высокие потолки и безопасная разгрузка спины.',
+        },
+        {
+            src: 'assets/demo-gallery-4.svg',
+            title: 'Lounge после тренировки',
+            text: 'Место, где можно выдохнуть, попить воды и выбрать следующее занятие.',
+        },
     ];
 
     const galleryContainer = document.querySelector('.gallery-container');
@@ -229,9 +233,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderGallery(idx, animation = null, direction = 1) {
         gallerySlider.innerHTML = '';
+        const item = galleryImages[idx];
         const slide = document.createElement('div');
         slide.className = 'gallery-slide active';
-        slide.innerHTML = `<img src="${galleryImages[idx]}" alt="gallery">`;
+        slide.innerHTML = `
+            <img src="${item.src}" alt="${item.title}">
+            <div class="gallery-caption">
+                <span>${idx + 1} / ${galleryImages.length}</span>
+                <h3>${item.title}</h3>
+                <p>${item.text}</p>
+            </div>
+        `;
         if (animation) {
             slide.classList.add(animation);
             slide.addEventListener('animationend', () => {
@@ -271,24 +283,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const coaches = [
         {
             photo: 'assets/demo-coach.svg',
-            name: 'Анастасия Рустамова',
-            desc: 'Анастасия — тренер с 6-летним опытом, кандидат в мастера спорта по синхронному фигурному катанию, многократная чемпионка России и Европы. С раннего детства в спорте — от фигурного катания и художественной гимнастики до сноуборда и вейксёрфа. Проводит персональные и групповые тренировки в мини-группах до 8 человек. Работает с подростками и взрослыми, создавая атмосферу поддержки, движения и заботы о теле. Вдохновляет личным примером: совмещает тренерство с нутрициологией, регулярно учится и планирует освоить массаж. Верит, что спорт помогает не только телу, но и уму — восстанавливает, заряжает и возвращает к себе. Любит путешествия, русскую музыку и всё, что связано с активной жизнью. На её тренировках — результат с душой.'
+            name: 'Мария',
+            role: 'растяжка и здоровая спина',
+            experience: '6 лет опыта',
+            desc: 'Помогает мягко снять зажимы, вернуть подвижность и почувствовать тело без давления и боли.',
+            tags: ['мягкий старт', 'осанка', 'спина']
         },
         {
             photo: 'assets/demo-coach.svg',
-            name: 'Наталья Королёва',
-            desc: 'Наталья пришла в фитнес в 2012 году как участница, а сегодня — сертифицированный тренер и кандидат биологических наук. Она совмещает научный подход с личным опытом, создавая осознанные и эффективные тренировки. Проводит занятия в мини-группах и больших залах, делая акцент не только на физический результат, но и на эмоциональное восстановление. Её путь — от полного подростка до профессионального тренера — вдохновляет тех, кто хочет меняться и чувствовать поддержку. Наталья продолжает развиваться, обучаясь новым методикам. Её занятия наполнены вниманием, заботой и энергией. Любит танцы, сайкл и прогулки — всё, что заряжает и помогает быть в ресурсе. Если тебе нужен тренер с душой и научным подходом — тебе к Наталье.'
+            name: 'София',
+            role: 'пилатес и функциональный тонус',
+            experience: '8 лет опыта',
+            desc: 'Выстраивает тренировку через технику, дыхание и контроль, чтобы результат был заметным и безопасным.',
+            tags: ['пилатес', 'кор', 'техника']
         },
         {
             photo: 'assets/demo-coach.svg',
-            name: 'Ирина Мозалева',
-            desc: 'Ирина — сертифицированный инструктор хатха-йоги (YTTC-200, Федерация йоги России) с образованием МГУ (филология). Её занятия сочетают практику, философию и осознанность, балансируя физическую нагрузку и внутреннее спокойствие. С детства Ирина занималась балетом и фитнесом, но йога стала её путём к ментальной устойчивости. Более года она ведёт групповые и индивидуальные тренировки, включая гвоздестояние для глубокого расслабления и концентрации. Вне йоги Ирина читает, изучает французский и увлекается плаванием. Она создаёт вдохновляющее пространство, где каждый чувствует себя услышанным. Занятия с Ириной помогут обрести гармонию тела и разума, внутреннюю силу и устойчивость.'
+            name: 'Алина',
+            role: 'аэройога и мобильность',
+            experience: '5 лет опыта',
+            desc: 'Работает с гамаками, балансом и разгрузкой позвоночника. Подходит тем, кто хочет лёгкости и нового ощущения тела.',
+            tags: ['аэройога', 'баланс', 'гибкость']
         },
-        
         {
             photo: 'assets/demo-coach.svg',
-            name: 'Наталья Зуева',
-            desc: 'Наталья — сертифицированный тренер с образованием СПБГУСЭ («Сервис») и дипломами по пилатесу и фитнесу. Её подход сочетает знания, внимание к деталям и заботу о клиентах. Ведёт групповые занятия по пилатесу, стретчингу и «Здоровой спине», совмещая эффективность и мягкость. С 7 лет в спорте: побеждала в волейболе, участвовала в соревнованиях по лёгкой атлетике, баскетболу и метанию гранаты. С 2024 года в Москве активно развивается как тренер, создавая занятия для укрепления тела и внутреннего равновесия. Вдохновляется музыкой, танцами и дизайном, привнося творчество в тренировки. Занятия с Натальей улучшат осанку, гибкость и силу, наполнят энергией. '
+            name: 'Вера',
+            role: 'танцевальные направления',
+            experience: '7 лет опыта',
+            desc: 'Помогает раскрыть пластику, уверенность и женственность через понятные связки и поддержку на каждом шаге.',
+            tags: ['танец', 'пластика', 'уверенность']
         }
     ];
 
@@ -304,12 +327,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const photo = slide.querySelector('.coach-photo');
         const name = slide.querySelector('.coach-name');
         const desc = slide.querySelector('.coach-desc');
+        const details = slide.querySelector('.coach-details');
         const counter = slide.querySelector('.coach-counter');
+        const coach = coaches[idx];
 
-        photo.src = coaches[idx].photo;
-        photo.alt = coaches[idx].name;
-        name.textContent = coaches[idx].name;
-        desc.textContent = coaches[idx].desc;
+        photo.src = coach.photo;
+        photo.alt = coach.name;
+        name.textContent = coach.name;
+        desc.textContent = coach.desc;
+        details.innerHTML = `
+            <span class="coach-kicker">Тренер ${idx + 1} из ${coaches.length}</span>
+            <h3 class="coach-name">${coach.name}</h3>
+            <div class="coach-role">${coach.role}</div>
+            <div class="coach-stats">
+                <span>${coach.experience}</span>
+                <span>мини-группы</span>
+                <span>бережная техника</span>
+            </div>
+            <p class="coach-desc">${coach.desc}</p>
+            <div class="coach-tags">
+                ${coach.tags.map(tag => `<span>${tag}</span>`).join('')}
+            </div>
+            <button class="coach-signup signup-button" data-training-type="Тренер ${coach.name}">Записаться</button>
+        `;
         counter.textContent = `${idx + 1} / ${coaches.length}`;
     }
 
@@ -328,6 +368,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработчики событий
     coachesClose.addEventListener('click', closeCoachesModal);
     modalBackdrop.addEventListener('click', closeCoachesModal);
+    modalContent.addEventListener('click', (e) => {
+        if (e.target.classList.contains('coach-signup')) {
+            tg.openLink(PUBLIC_LINKS.signup);
+        }
+    });
 
     document.querySelector('.coaches-prev').addEventListener('click', () => {
         currentCoach = (currentCoach - 1 + coaches.length) % coaches.length;
@@ -391,13 +436,15 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Пробное занятие',
             price: '500 ₽',
-            description: 'На любое направление',
-            features: []
+            description: 'Первое знакомство',
+            badge: 'старт',
+            features: ['любое направление', 'подбор нагрузки', 'знакомство с тренером']
         },
         {
             title: 'Абонемент «Лайт»',
             price: '9 600 ₽',
             description: '8 занятий',
+            badge: '8 занятий',
             features: [
                 'По 1 200 ₽ за занятие',
                 'Действует 30 дней',
@@ -409,6 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Абонемент «Медиум»',
             price: '13 440 ₽',
             description: '12 занятий',
+            badge: 'популярно',
             features: [
                 'По 1 120 ₽ за занятие',
                 'Действует 45 дней',
@@ -420,6 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Абонемент «Хард»',
             price: '17 400 ₽',
             description: '16 занятий',
+            badge: 'выгодно',
             features: [
                 'По 1 088 ₽ за занятие',
                 'Действует 60 дней',
@@ -431,6 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Абонемент «Хард ПРО»',
             price: '24 960 ₽',
             description: '24 занятия',
+            badge: 'максимум',
             features: [
                 'По 1 040 ₽ за занятие',
                 'Действует 90 дней',
@@ -449,28 +499,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPriceBlock = 0;
 
     function renderPrice(idx) {
-        pricesSlider.innerHTML = ''; // Очищаем слайдер перед добавлением нового блока
+        pricesSlider.innerHTML = '';
         const price = prices[idx];
         const block = document.createElement('div');
         block.className = 'price-block';
         block.innerHTML = `
+            <div class="price-card-top">
+                <span class="price-badge">${price.badge}</span>
+                <span class="price-count">${idx + 1} / ${prices.length}</span>
+            </div>
             <div class="price-title">${price.title}</div>
             <div class="price-description">${price.description}</div>
             <div class="price-cost-wrap">
                 <div class="price-cost-value">${price.price}</div>
+                <div class="price-cost-note">demo-стоимость</div>
             </div>
-            ${price.features.length > 0 ? `
-                <div class="price-features">
-                    ${price.features.map(feature => `
-                        <div class="price-feature">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            ${feature}
-                        </div>
-                    `).join('')}
-                </div>
-            ` : ''}
+            <div class="price-features">
+                ${price.features.map(feature => `
+                    <div class="price-feature">
+                        <span class="price-check">✓</span>
+                        ${feature}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="price-dots">
+                ${prices.map((_, i) => `<span class="price-dot${i === idx ? ' active' : ''}"></span>`).join('')}
+            </div>
             <button class="signup-button" data-training-type="${price.title}">Записаться</button>
         `;
         pricesSlider.appendChild(block);
@@ -594,63 +648,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalHowToFind = document.querySelector('.modal-how-to-find');
     const modalHowToFindBackdrop = document.querySelector('.modal-how-to-find__backdrop');
     const modalHowToFindClose = document.querySelector('.modal-how-to-find__close');
-    const howToFindVideo = document.querySelector('.how-to-find-video');
-    const howToFindImage = document.querySelector('.how-to-find-image');
-
-    // Новые переменные для слайдера "Как нас найти"
-    const howToFindSlider = document.querySelector('.how-to-find-slider');
-    const howToFindSlides = document.querySelectorAll('.how-to-find-slide');
-    const howToFindPrevButton = document.querySelector('.how-to-find-prev');
-    const howToFindNextButton = document.querySelector('.how-to-find-next');
-    let currentHowToFindSlide = 0;
-
-    function renderHowToFindSlide(idx) {
-        howToFindSlides.forEach((slide, i) => {
-            if (i === idx) {
-                slide.classList.add('active');
-                if (slide.querySelector('video')) {
-                    // Если это слайд с видео, убедимся, что оно на паузе (пользователь сам решит воспроизводить)
-                    slide.querySelector('video').pause();
-                    slide.querySelector('video').currentTime = 0;
-                }
-            } else {
-                slide.classList.remove('active');
-                if (slide.querySelector('video')) {
-                    // Останавливаем видео, если слайд неактивен
-                    slide.querySelector('video').pause();
-                    slide.querySelector('video').currentTime = 0;
-                }
-            }
-        });
-    }
-
-    function moveHowToFindSlide(direction) {
-        currentHowToFindSlide = (currentHowToFindSlide + direction + howToFindSlides.length) % howToFindSlides.length;
-        renderHowToFindSlide(currentHowToFindSlide);
-    }
+    const howToFindRoute = document.querySelector('.how-to-find-route');
+    const howToFindMap = document.querySelector('.how-to-find-map');
 
     function openHowToFindModal() {
+        if (howToFindMap && howToFindMap.dataset.src && howToFindMap.src === 'about:blank') {
+            howToFindMap.src = howToFindMap.dataset.src;
+        }
         modalHowToFind.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        renderHowToFindSlide(currentHowToFindSlide); // Отображаем первый слайд при открытии
-        // if (howToFindVideo) howToFindVideo.play(); // Начать воспроизведение видео
     }
 
     function closeHowToFindModal() {
         modalHowToFind.style.display = 'none';
         document.body.style.overflow = '';
-        if (howToFindVideo) {
-            howToFindVideo.pause(); // Остановить воспроизведение видео
-            howToFindVideo.currentTime = 0; // Сбросить видео на начало
-        }
     }
 
     modalHowToFindClose.addEventListener('click', closeHowToFindModal);
     modalHowToFindBackdrop.addEventListener('click', closeHowToFindModal);
-
-    // Добавляем обработчики для стрелок слайдера
-    howToFindPrevButton.addEventListener('click', () => moveHowToFindSlide(-1));
-    howToFindNextButton.addEventListener('click', () => moveHowToFindSlide(1));
+    if (howToFindRoute) {
+        howToFindRoute.addEventListener('click', (e) => {
+            e.preventDefault();
+            tg.openLink(howToFindRoute.href);
+        });
+    }
 
     // Открытие по клику на кнопку "Как нас найти?"
     document.querySelectorAll('.group-28, .group-28 .text-wrapper-42').forEach(el => {
@@ -970,12 +991,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Открытие модалки по клику на любую кнопку 'Подробнее'
     document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('training-info-signup')) {
+            tg.openLink(PUBLIC_LINKS.signup);
+            return;
+        }
         if (e.target.classList.contains('more-info-btn')) {
             const type = e.target.getAttribute('data-type');
             if (trainingInfoTexts[type]) {
-                modalTrainingInfoBody.innerHTML = trainingInfoTexts[type];
+                modalTrainingInfoBody.innerHTML = `
+                    <div class="training-info-modern" data-training="${type}">
+                        <div class="training-info-hero">
+                            <span class="training-info-kicker">Подробнее о направлении</span>
+                            ${trainingInfoTexts[type]}
+                        </div>
+                        <div class="training-info-cta">
+                            <span>Хочешь подобрать нагрузку под себя?</span>
+                            <button class="training-info-signup signup-button" data-training-type="Подробнее: ${type}">Записаться</button>
+                        </div>
+                    </div>
+                `;
                 modalTrainingInfo.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
+                modalTrainingInfoBody.scrollTop = 0;
             }
         }
     });
@@ -1077,7 +1114,8 @@ function handleSocialClick(event) {
 document.querySelectorAll('a[href^="geo:"]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const [lat, lon] = e.target.href.replace('geo:', '').split(',');
+        const geoLink = e.target.closest('a[href^="geo:"]');
+        const [lat, lon] = geoLink.href.replace('geo:', '').split(',');
         tg.openLink(`https://www.google.com/maps/search/?api=1&query=${lat},${lon}`);
     });
 }); 
