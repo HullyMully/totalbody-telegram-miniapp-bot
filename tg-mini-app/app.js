@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tg.enableClosingConfirmation();
     
     // Получаем все элементы кнопок "Записаться" (контейнеры текста)
-    const signupButtons = document.querySelectorAll('.div-wrapper, .overlap-group-2');
+    const signupButtons = document.querySelectorAll('.div-wrapper, .overlap-group-2, .program-card__button');
     
     // Добавляем обработчики для каждой кнопки
     signupButtons.forEach(button => {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const container = document.querySelector('.group-17');
-    const cards = container.querySelectorAll('.frame-9, .overlap-14, .overlap-17, .overlap-18');
+    const cards = container ? container.querySelectorAll('.program-card, .frame-9, .overlap-14, .overlap-17, .overlap-18') : [];
     
     const vazhnoeContainer = document.querySelector('.vazhnoe-items-container');
     const vazhnoeItems = vazhnoeContainer.querySelectorAll('.group-25, .group-26, .group-29, .group-30');
@@ -79,13 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Обновляем при скролле для блока тренировок
-    container.addEventListener('scroll', function() { updateActiveCard(container, cards); });
+    if (container && cards.length) {
+        container.addEventListener('scroll', function() { updateActiveCard(container, cards); });
+    }
     
     // Обновляем при загрузке страницы для блока тренировок
-    updateActiveCard(container, cards);
+    if (container && cards.length) {
+        updateActiveCard(container, cards);
+    }
     
     // Обновляем при изменении размера окна для блока тренировок
-    window.addEventListener('resize', function() { updateActiveCard(container, cards); });
+    if (container && cards.length) {
+        window.addEventListener('resize', function() { updateActiveCard(container, cards); });
+    }
 
     // Обновляем при скролле для блока Важное
     vazhnoeContainer.addEventListener('scroll', function() { updateActiveCard(vazhnoeContainer, vazhnoeItems); });
@@ -148,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img class="avatar-center" src="${centerReview.avatar}" alt="${centerReview.name}">
                 <div>
                     <div class="avatar-name-center">${centerReview.name}</div>
-                    <div class="review-card-subtitle">клиент demo-студии</div>
+                    <div class="review-card-subtitle">клиент студии</div>
                 </div>
             </div>
             <p class="text-wrapper-13">${centerReview.text}</p>
@@ -512,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="price-description">${price.description}</div>
             <div class="price-cost-wrap">
                 <div class="price-cost-value">${price.price}</div>
-                <div class="price-cost-note">demo-стоимость</div>
+                <div class="price-cost-note">стоимость</div>
             </div>
             <div class="price-features">
                 ${price.features.map(feature => `
@@ -1058,7 +1064,7 @@ function handleSignup(event) {
     // Формируем сообщение для Telegram
     const message = encodeURIComponent(`Здравствуйте! Я хочу записаться на: ${trainingType}`);
 
-    // Открываем публичный demo-link бота для записи
+    // Открываем публичную ссылку бота для записи
     tg.openLink(PUBLIC_LINKS.signup);
 
     // Отправляем данные в Telegram для аналитики

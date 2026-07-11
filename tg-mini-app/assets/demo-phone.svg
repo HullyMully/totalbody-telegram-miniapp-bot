@@ -15,6 +15,6 @@
   <rect x="94" y="379" width="146" height="16" rx="8" fill="#CDBAAE"/>
   <rect x="74" y="430" width="272" height="42" rx="21" fill="#F0E6DA"/>
   <rect x="94" y="443" width="188" height="16" rx="8" fill="#CDBAAE"/>
-  <rect x="74" y="504" width="272" height="58" rx="29" fill="#900C3F"/>
-  <text x="143" y="540" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="20" font-weight="700">Открыть demo</text>
+  <rect x="118" y="512" width="184" height="18" rx="9" fill="#F0E6DA"/>
+  <rect x="142" y="548" width="136" height="14" rx="7" fill="#CDBAAE"/>
 </svg>

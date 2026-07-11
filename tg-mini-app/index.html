@@ -8,9 +8,9 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css?v=20260711-modern" />
+    <link rel="stylesheet" href="style.css?v=20260711-layoutfix" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js?v=20260711-modern" defer></script>
+    <script src="app.js?v=20260711-layoutfix" defer></script>
   </head>
   <body>
     <div class="app">
@@ -165,7 +165,7 @@
                   <img class="gallery-next" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661528/dd9lremyfhqg72or5kfw.svg" loading="lazy" />
                 </div>
                 <div class="group-8">
-                  <div class="text-wrapper-17">Demo-адрес студии</div>
+                  <div class="text-wrapper-17">Адрес студии</div>
                   <div class="overlap-5">
                     <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
                     <div class="text-wrapper-18">Студия у Цветного бульвара</div>
@@ -186,7 +186,7 @@
                   </p>
                   <div class="overlap-7">
                     <img class="vector-9" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-22">Demo-локация</div>
+                    <div class="text-wrapper-22">Ориентир</div>
                   </div>
                   <img class="vector-10" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661537/tsz0d3qyu13cjsbohtra.svg" loading="lazy" />
                   <p class="element-4">
@@ -218,7 +218,7 @@
                 <div class="group-10">
                   <div class="overlap-10">
                     <img class="vector-12" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/wvow3mvoufemfomk6qcf.svg" loading="lazy" />
-                    <div class="text-wrapper-25">Demo-студия у Цветного бульвара</div>
+                    <div class="text-wrapper-25">Цветной бульвар, 15</div>
                   </div>
                 </div>
                 <img class="vector-13" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661536/toyf0oizj701140ivxfs.svg" loading="lazy" />
@@ -250,96 +250,66 @@
               </div>
             </div>
             <div class="group-17">
-              <div class="frame-9">
-                <div class="overlap-12">
-                  <div class="overlap-13">
-                    <img class="group-18" src="assets/demo-card.svg" loading="lazy" />
-                    <div class="text-wrapper-34">Силовые<br />и кардио-тренировки</div>
-                    <p class="div-2">
-                      <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                      <span class="text-wrapper-36"
-                        ><br />— подтянуть тело<br />— сбросить напряжение через активность<br />— почувствовать энергию
-                        и контроль над своим телом</span
-                      >
-                    </p>
-                    <p class="text-wrapper-37">🔥 Форматы: функциональный фитнес, женские круговые, кардио-миксы</p>
-                  </div>
-                  <div class="group-19">
-                    <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                  </div>
-                  <div class="ic-round-sports">
-                    <div class="icon-park-outline"><img class="group-20" src="assets/demo-card.svg" loading="lazy" /></div>
-                  </div>
+              <article class="program-card frame-9" data-training-type="Силовые и кардио">
+                <div class="program-card__top">
+                  <div class="program-card__icon">ST</div>
+                  <span class="program-card__label">тонус</span>
                 </div>
-              </div>
-              <div class="overlap-14">
-                <div class="frame-10">
-                  <div class="overlap-15">
-                    <div class="overlap-16">
-                      <img class="group-21" src="assets/demo-card.svg" loading="lazy" />
-                      <p class="div-3">
-                        <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                        <span class="text-wrapper-36"
-                          ><br />— отпустить тревожность и восстановиться<br />— улучшить осанку и дыхание<br />—
-                          разгрузить тело после сидячей работы</span
-                        >
-                      </p>
-                      <p class="text-wrapper-38">🔥 Форматы: хатха, аэройога в гамаках, дыхательные практики</p>
-                    </div>
-                    <div class="text-wrapper-39">Йога<br />и аэройога</div>
-                    <div class="group-22">
-                      <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
+                <h3>Силовые и кардио</h3>
+                <p class="program-card__lead">Для энергии, подтянутого тела и уверенного контроля нагрузки.</p>
+                <ul class="program-card__list">
+                  <li>активная тренировка без хаоса</li>
+                  <li>круговые станции и кардио-миксы</li>
+                  <li>подходит после перерыва в спорте</li>
+                </ul>
+                <div class="program-card__format">Функциональный фитнес · круговые · кардио</div>
+                <button type="button" class="program-card__button signup-button" data-training-type="Силовые и кардио">Записаться</button>
+              </article>
+              <article class="program-card overlap-14" data-training-type="Йога и аэройога">
+                <div class="program-card__top">
+                  <div class="program-card__icon">YO</div>
+                  <span class="program-card__label">баланс</span>
                 </div>
-                <div class="mdi-yoga-wrapper"><img class="mdi-yoga" src="assets/demo-card.svg" loading="lazy" /></div>
-              </div>
-              <div class="overlap-17">
-                <div class="frame-10">
-                  <div class="overlap-15">
-                    <div class="overlap-16">
-                      <img class="group-21" src="assets/demo-card.svg" loading="lazy" />
-                      <p class="div-3">
-                        <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                        <span class="text-wrapper-36"
-                          ><br />— стать гибкой без насилия над собой<br />— снять напряжение в спине и шее<br />—
-                          научиться слышать своё тело</span
-                        >
-                      </p>
-                      <p class="text-wrapper-38">🔥 Форматы: стретчинг, шпагаты, мягкое вытяжение</p>
-                    </div>
-                    <div class="text-wrapper-39">Растяжка и мягкие тренировки</div>
-                    <div class="group-22">
-                      <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
+                <h3>Йога и аэройога</h3>
+                <p class="program-card__lead">Мягкая разгрузка спины, дыхание и спокойная работа с телом.</p>
+                <ul class="program-card__list">
+                  <li>снять тревожность и зажимы</li>
+                  <li>улучшить осанку и дыхание</li>
+                  <li>восстановиться после сидячей работы</li>
+                </ul>
+                <div class="program-card__format">Хатха · аэройога в гамаках · дыхание</div>
+                <button type="button" class="program-card__button signup-button" data-training-type="Йога и аэройога">Записаться</button>
+              </article>
+              <article class="program-card overlap-17" data-training-type="Растяжка">
+                <div class="program-card__top">
+                  <div class="program-card__icon">RT</div>
+                  <span class="program-card__label">мягкость</span>
                 </div>
-                <div class="material-symbols-wrapper">
-                  <img class="material-symbols" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661531/lkzwquas0k6wuajf4sws.svg" loading="lazy" />
+                <h3>Растяжка</h3>
+                <p class="program-card__lead">Гибкость без давления, легкость в движениях и забота о спине.</p>
+                <ul class="program-card__list">
+                  <li>стать гибче в комфортном темпе</li>
+                  <li>снять напряжение в шее и пояснице</li>
+                  <li>лучше чувствовать свое тело</li>
+                </ul>
+                <div class="program-card__format">Стретчинг · шпагаты · мягкое вытяжение</div>
+                <button type="button" class="program-card__button signup-button" data-training-type="Растяжка">Записаться</button>
+              </article>
+              <article class="program-card overlap-18" data-training-type="Танцевальные направления">
+                <div class="program-card__top">
+                  <div class="program-card__icon">DN</div>
+                  <span class="program-card__label">пластика</span>
                 </div>
-              </div>
-              <div class="overlap-18">
-                <div class="frame-11">
-                  <div class="overlap-19">
-                    <div class="overlap-20">
-                      <img class="group-23" src="assets/demo-card.svg" loading="lazy" />
-                      <p class="div-4">
-                        <span class="text-wrapper-35">Подойдут тебе, если ты хочешь:<br /></span>
-                        <span class="text-wrapper-36"
-                          ><br />— раскрыть женственность и тело<br />— почувствовать уверенность в движении<br />—
-                          прокачать пластику и наслаждаться собой</span
-                        >
-                      </p>
-                      <p class="text-wrapper-38">🔥 Форматы: high heels, strip plastic, frame up</p>
-                    </div>
-                    <div class="text-wrapper-39">Танцевальные направления</div>
-                    <div class="group-24">
-                      <div class="overlap-group-2"><div class="text-wrapper-2">Записаться</div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mdi-dance-pole-wrapper"><img class="mdi-dance-pole" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661531/xwur1dfdlcthbbzri6fo.svg" loading="lazy" /></div>
-              </div>
+                <h3>Танцевальные направления</h3>
+                <p class="program-card__lead">Для уверенности, пластики и красивого движения под музыку.</p>
+                <ul class="program-card__list">
+                  <li>раскрыть женственность и тело</li>
+                  <li>почувствовать свободу в движении</li>
+                  <li>прокачать координацию и осанку</li>
+                </ul>
+                <div class="program-card__format">High heels · strip plastic · frame up</div>
+                <button type="button" class="program-card__button signup-button" data-training-type="Танцевальные направления">Записаться</button>
+              </article>
             </div>
             <img class="shape-with-text-4" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661534/fi4a0hrovmrlyyvzdpxg.svg" loading="lazy" />
             <img class="vector-15" src="https://res.cloudinary.com/dj05yedo3/image/upload/v1749661525/g0m5v3hjdb8z01puhdi0.svg" loading="lazy" />
@@ -529,7 +499,7 @@
           <div class="coach-slide">
             <div class="coach-info">
               <div class="coach-photo-container">
-                <img class="coach-photo" src="assets/demo-coach.svg" alt="Демо тренер">
+                <img class="coach-photo" src="assets/demo-coach.svg" alt="Тренер">
               </div>
               <div class="coach-details">
                 <h3 class="coach-name"></h3>
@@ -577,7 +547,7 @@
         <div class="modal-video__backdrop"></div>
         <div class="modal-video__content">
             <button class="modal-video__close">&times;</button>
-            <img class="video-player" src="assets/demo-gallery-1.svg" alt="Видео демо" loading="lazy">
+            <img class="video-player" src="assets/demo-gallery-1.svg" alt="Видео студии" loading="lazy">
         </div>
     </div>
 
@@ -611,7 +581,7 @@
                 <div class="faq-item">
                     <div class="faq-question">Как записаться и где посмотреть расписание?<span class="faq-arrow">&#9660;</span></div>
                     <p class="faq-answer">
-                        Вы можете записаться на пробное занятие через demo booking widget (<a href="https://example.com/booking-widget" target="_blank">https://example.com/booking-widget</a>). Или оставить заявку, и мы вместе подберём для вас оптимальное занятие и время.
+                        Вы можете записаться на пробное занятие через виджет записи (<a href="https://example.com/booking-widget" target="_blank">https://example.com/booking-widget</a>). Или оставить заявку, и мы вместе подберём для вас оптимальное занятие и время.
                     </p>
                 </div>
                 <div class="faq-item">
@@ -663,14 +633,14 @@
                 <div class="how-to-find-map-card">
                     <iframe
                         class="how-to-find-map"
-                        title="Demo-локация на карте"
+                        title="Локация на карте"
                         src="about:blank"
                         data-src="https://www.openstreetmap.org/export/embed.html?bbox=37.6118%2C55.7671%2C37.6298%2C55.7753&amp;layer=mapnik&amp;marker=55.7712%2C37.6208"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="how-to-find-card">
-                    <span class="how-to-find-kicker">Demo-локация</span>
+                    <span class="how-to-find-kicker">Локация</span>
                     <h2>Студия у Цветного бульвара</h2>
                     <p>Москва, Цветной бульвар, 15. 5 минут пешком от метро, вход со стороны бульвара.</p>
                     <a class="how-to-find-route" href="https://www.openstreetmap.org/?mlat=55.7712&amp;mlon=37.6208#map=17/55.7712/37.6208" target="_blank" rel="noopener noreferrer">Открыть маршрут</a>
