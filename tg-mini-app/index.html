@@ -14,9 +14,1161 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css?v=20260710" />
+    <style>
+@font-face {
+  font-family: "Gotham Pro";
+  src: url("Gotham%20Pro/gothampro.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham Pro";
+  src: url("Gotham%20Pro/gothampro_bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --berry: #970d43;
+  --berry-dark: #6f0932;
+  --coral: #ff6748;
+  --cream: #f4eadc;
+  --paper: #fffaf4;
+  --mint: #d8f1dd;
+  --sky: #d7edff;
+  --ink: #291d23;
+  --muted: #796b70;
+  --line: rgba(41, 29, 35, 0.12);
+  --shadow: 0 18px 44px rgba(87, 17, 44, 0.14);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(151, 13, 67, 0.08), rgba(255, 103, 72, 0.06)),
+    var(--paper);
+  color: var(--ink);
+  font-family: "Gotham Pro", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 0 14px calc(110px + var(--safe-bottom));
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100svh - 18px);
+  overflow: hidden;
+  margin: 8px 0 20px;
+  padding: 18px;
+  border-radius: 8px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(255, 103, 72, 0.9) 0 16%, transparent 17%),
+    linear-gradient(155deg, var(--berry), var(--berry-dark));
+  box-shadow: var(--shadow);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -26px -52px auto;
+  width: 180px;
+  height: 180px;
+  border: 24px solid rgba(244, 234, 220, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.topbar,
+.hero-grid,
+.trust-strip {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-mark {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.62);
+  border-radius: 50%;
+  color: var(--coral);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.brand-text {
+  font-size: clamp(1.65rem, 8vw, 2.55rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.quick-links {
+  display: inline-flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.icon-button,
+.slider-arrow,
+.dot {
+  border: 0;
+  cursor: pointer;
+}
+
+.icon-button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.icon-button svg,
+.slider-arrow svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.icon-button:active,
+.button:active,
+.slider-arrow:active {
+  transform: scale(0.96);
+}
+
+.hero-grid {
+  display: grid;
+  gap: 16px;
+  padding-top: clamp(34px, 10vh, 66px);
+}
+
+.hero-copy {
+  max-width: 430px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--coral);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  color: var(--cream);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2.85rem, 15vw, 4.55rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.65rem, 8vw, 2.45rem);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 8px;
+  font-size: 1.12rem;
+  line-height: 1.16;
+}
+
+.hero-lead {
+  margin-bottom: 22px;
+  max-width: 390px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.hero-actions,
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 16px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.button-primary {
+  color: #fff;
+  background: var(--coral);
+  box-shadow: 0 12px 24px rgba(255, 103, 72, 0.26);
+}
+
+.button-secondary {
+  color: var(--berry);
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(151, 13, 67, 0.08);
+}
+
+.button-light {
+  color: var(--berry);
+  background: #fff;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.hero-visual {
+  position: relative;
+  width: min(68vw, 280px);
+  justify-self: center;
+  align-self: end;
+  animation: floatVisual 6s ease-in-out infinite;
+}
+
+.hero-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 28px 54px rgba(50, 0, 22, 0.22);
+}
+
+.hero-badge {
+  position: absolute;
+  left: -16px;
+  bottom: 18px;
+  padding: 10px 13px;
+  border-radius: 8px;
+  color: var(--berry);
+  background: var(--cream);
+  font-size: 0.78rem;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(48, 7, 25, 0.18);
+}
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.trust-strip div {
+  min-height: 78px;
+  padding: 12px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.trust-strip strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--cream);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.trust-strip span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.74rem;
+  line-height: 1.2;
+}
+
+.section {
+  padding: 26px 0;
+}
+
+.section-heading {
+  margin-bottom: 16px;
+}
+
+.section-heading p:not(.eyebrow),
+.feature-card p,
+.benefit-card p,
+.coach-card p,
+.contact-card p,
+.direction-content p,
+.review-card p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.feature-card,
+.direction-panel,
+.benefit-card,
+.coach-card,
+.review-card,
+.contact-card {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.feature-card {
+  display: grid;
+  gap: 16px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.feature-card-dark {
+  color: #fff;
+  background: linear-gradient(150deg, var(--berry), #4f0926);
+}
+
+.feature-card-dark p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.feature-card img {
+  width: 100%;
+  max-height: 210px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--cream);
+}
+
+.tag {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--berry);
+  background: var(--mint);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.direction-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 -14px 14px;
+  padding: 0 14px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.direction-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.direction-tab {
+  min-height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 13px;
+  color: var(--berry);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.direction-tab.active {
+  color: #fff;
+  border-color: var(--berry);
+  background: var(--berry);
+}
+
+.direction-panel {
+  display: grid;
+  overflow: hidden;
+  background: #fff;
+}
+
+.direction-media {
+  background: var(--cream);
+}
+
+.direction-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.45;
+  object-fit: cover;
+}
+
+.direction-content {
+  padding: 16px;
+}
+
+.direction-content ul {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.direction-content li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.direction-content li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+.studio-section {
+  margin: 10px -14px;
+  padding: 30px 14px;
+  background: linear-gradient(180deg, #fff, var(--cream));
+}
+
+.benefit-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.benefit-card {
+  padding: 16px;
+  background: #fff;
+}
+
+.benefit-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 12px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--berry);
+  background: var(--sky);
+}
+
+.benefit-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.coach-slider {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  align-items: center;
+  gap: 8px;
+}
+
+.slider-arrow {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--berry);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.coach-card {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px;
+  background: #fff;
+}
+
+.coach-card img {
+  width: 100%;
+  aspect-ratio: 1.2;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--cream);
+}
+
+.reviews-section {
+  margin: 10px -14px;
+  padding: 30px 14px;
+  color: #fff;
+  background: linear-gradient(155deg, var(--berry-dark), var(--berry));
+}
+
+.reviews-section .eyebrow,
+.reviews-section h2 {
+  color: #fff;
+}
+
+.review-card {
+  padding: 18px;
+  color: var(--ink);
+  background: #fff;
+}
+
+.review-avatars {
+  display: flex;
+  margin-bottom: 18px;
+}
+
+.review-avatars img {
+  width: 54px;
+  height: 54px;
+  margin-right: -12px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--cream);
+}
+
+.review-card p {
+  min-height: 96px;
+  font-size: 1rem;
+}
+
+.review-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.review-footer span {
+  color: var(--berry);
+  font-weight: 700;
+}
+
+.review-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dot {
+  width: 22px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(151, 13, 67, 0.18);
+  transition: width 180ms ease, background 180ms ease;
+}
+
+.dot.active {
+  width: 42px;
+  background: var(--berry);
+}
+
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.faq-item {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(87, 17, 44, 0.06);
+}
+
+.faq-question {
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  padding: 0 14px;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 700;
+}
+
+.faq-question svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: var(--berry);
+  transition: transform 180ms ease;
+}
+
+.faq-item.open .faq-question svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 220ms ease;
+}
+
+.faq-answer p {
+  margin: 0;
+  padding: 0 14px 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.contact-card {
+  display: grid;
+  gap: 14px;
+  overflow: hidden;
+  padding: 16px;
+  background: #fff;
+}
+
+.contact-card img {
+  width: 100%;
+  aspect-ratio: 1.7;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--cream);
+}
+
+.sticky-cta {
+  position: fixed;
+  z-index: 50;
+  right: 12px;
+  bottom: calc(12px + var(--safe-bottom));
+  left: 12px;
+  display: flex;
+  width: min(calc(100% - 24px), 496px);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(255, 250, 244, 0.92);
+  box-shadow: 0 18px 44px rgba(41, 29, 35, 0.2);
+  backdrop-filter: blur(16px);
+  transform: translateY(120%);
+  transition: transform 260ms ease;
+}
+
+.sticky-cta.visible {
+  transform: translateY(0);
+}
+
+.sticky-cta strong,
+.sticky-cta span {
+  display: block;
+}
+
+.sticky-cta strong {
+  color: var(--berry);
+  font-size: 0.95rem;
+}
+
+.sticky-cta span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+.sticky-cta .button {
+  min-height: 42px;
+  padding: 0 13px;
+  white-space: nowrap;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-changing {
+  animation: contentSwap 260ms ease;
+}
+
+@keyframes contentSwap {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatVisual {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (min-width: 430px) {
+  .app-shell {
+    padding-inline: 18px;
+  }
+
+  .hero {
+    padding: 22px;
+  }
+
+  .feature-card,
+  .direction-panel {
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+  }
+
+  .feature-card img,
+  .direction-media img {
+    height: 100%;
+    min-height: 230px;
+  }
+
+  .coach-card {
+    grid-template-columns: 128px 1fr;
+    align-items: center;
+  }
+
+  .coach-card img {
+    aspect-ratio: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+    </style>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js?v=20260710" defer></script>
+    <script>
+const tg = window.Telegram?.WebApp || {
+  expand() {},
+  enableClosingConfirmation() {},
+  setHeaderColor() {},
+  setBackgroundColor() {},
+  openLink(url) {
+    window.open(url, "_blank", "noopener");
+  },
+  openTelegramLink(url) {
+    window.open(url, "_blank", "noopener");
+  },
+  sendData() {},
+};
+
+const runtimeParams = new URLSearchParams(window.location.search);
+
+function normalizeTelegramUrl(value) {
+  if (!value) return "";
+  const trimmed = value.trim();
+  if (/^(https?:|tg:)/i.test(trimmed)) return trimmed;
+  return `https://t.me/${trimmed.replace(/^@/, "")}`;
+}
+
+const PUBLIC_LINKS = {
+  signup: normalizeTelegramUrl(runtimeParams.get("signup") || runtimeParams.get("bot")) || "https://t.me/demohmtgbot",
+  telegramMain: "https://t.me/total_body",
+  telegramVernadskogo: "https://t.me/total_body_ver",
+  whatsappVernadskogo: "https://t.me/demohmtgbot",
+};
+
+const directions = [
+  {
+    title: "Растяжка",
+    mood: "Гибкость",
+    image: "assets/demo-gallery-1.svg",
+    text: "Мягкая работа с телом, снятие зажимов и легкость после тренировки.",
+    benefits: ["Подходит новичкам", "Снимает напряжение", "Помогает улучшить осанку"],
+  },
+  {
+    title: "Пилатес",
+    mood: "Сильный центр",
+    image: "assets/demo-gallery-2.svg",
+    text: "Контроль, глубокие мышцы и спокойная нагрузка без перегруза суставов.",
+    benefits: ["Укрепляет корпус", "Поддерживает спину", "Дает ощущение собранности"],
+  },
+  {
+    title: "Аэройога",
+    mood: "Легкость",
+    image: "assets/demo-gallery-3.svg",
+    text: "Гамак помогает разгрузить спину, раскрыть тело и добавить немного полета.",
+    benefits: ["Разгрузка позвоночника", "Эффектная практика", "Мягкая растяжка"],
+  },
+  {
+    title: "Здоровая спина",
+    mood: "Баланс",
+    image: "assets/demo-gallery-4.svg",
+    text: "Тренировка для тех, кто много сидит, устает в спине и хочет двигаться свободнее.",
+    benefits: ["Мобилизация суставов", "Аккуратное укрепление", "Профилактика дискомфорта"],
+  },
+  {
+    title: "Фитнес-аэробика",
+    mood: "Энергия",
+    image: "assets/demo-card.svg",
+    text: "Динамичный формат для настроения, выносливости и приятной усталости после занятия.",
+    benefits: ["Кардио-нагрузка", "Координация", "Заряд на день"],
+  },
+];
+
+const coaches = [
+  {
+    name: "Анастасия Рустамова",
+    role: "Stretching",
+    text: "Ведет мягкие и внимательные занятия, помогает почувствовать тело и не бояться первого шага.",
+  },
+  {
+    name: "Наталья Королева",
+    role: "Pilates",
+    text: "Сочетает научный подход, спокойный темп и заботу о технике каждого движения.",
+  },
+  {
+    name: "Ирина Мозалева",
+    role: "Yoga",
+    text: "Создает практику для баланса: дыхание, гибкость, сила и устойчивость внутри.",
+  },
+];
+
+const reviews = [
+  {
+    name: "Анна",
+    rating: "5.0 / 5.0",
+    text: "Очень понравилась атмосфера: спокойно, красиво и понятно. После первого занятия захотелось вернуться.",
+  },
+  {
+    name: "Екатерина",
+    rating: "4.9 / 5.0",
+    text: "Администратор быстро помогла выбрать направление, а тренер аккуратно объясняла каждое упражнение.",
+  },
+  {
+    name: "Виктория",
+    rating: "5.0 / 5.0",
+    text: "Удобно, что все можно посмотреть в Telegram и сразу записаться. Для меня это решило вопрос первого визита.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Можно прийти без подготовки?",
+    answer: "Да. На пробном занятии тренер подберет нагрузку под уровень и самочувствие.",
+  },
+  {
+    question: "Что взять с собой?",
+    answer: "Удобную форму, воду и хорошее настроение. Коврики и оборудование есть в студии.",
+  },
+  {
+    question: "Как выбрать направление?",
+    answer: "Оставь заявку, администратор уточнит цель и подскажет формат: растяжка, пилатес, йога или функциональные тренировки.",
+  },
+  {
+    question: "Можно ли подарить занятие?",
+    answer: "Да, в студии доступны подарочные сертификаты и бонусы для новых клиентов.",
+  },
+];
+
+function openUrl(url) {
+  if (!url) return;
+  const isTelegram = /^https:\/\/t\.me\//i.test(url) || /^tg:/i.test(url);
+  if (isTelegram && typeof tg.openTelegramLink === "function") {
+    tg.openTelegramLink(url);
+    return;
+  }
+  tg.openLink(url);
+}
+
+function vibrate(style = "light") {
+  try {
+    tg.HapticFeedback?.impactOccurred(style);
+  } catch {
+    // Telegram haptics are optional outside the mobile client.
+  }
+}
+
+function handleSignup(event) {
+  const source = event?.currentTarget?.closest("section")?.id || "mini_app";
+  vibrate("medium");
+  try {
+    tg.sendData(JSON.stringify({ action: "signup", source, at: new Date().toISOString() }));
+  } catch {
+    // sendData is unavailable in a plain browser preview.
+  }
+  openUrl(PUBLIC_LINKS.signup);
+}
+
+function renderDirections() {
+  const tabs = document.querySelector(".direction-tabs");
+  const title = document.getElementById("directionTitle");
+  const mood = document.getElementById("directionMood");
+  const text = document.getElementById("directionText");
+  const image = document.getElementById("directionImage");
+  const benefits = document.getElementById("directionBenefits");
+  const panel = document.querySelector(".direction-panel");
+
+  function selectDirection(index) {
+    const direction = directions[index];
+    tabs.querySelectorAll(".direction-tab").forEach((tab, tabIndex) => {
+      tab.classList.toggle("active", tabIndex === index);
+      tab.setAttribute("aria-selected", String(tabIndex === index));
+    });
+    title.textContent = direction.title;
+    mood.textContent = direction.mood;
+    text.textContent = direction.text;
+    image.src = direction.image;
+    benefits.innerHTML = direction.benefits.map((benefit) => `<li>${benefit}</li>`).join("");
+    panel.classList.remove("is-changing");
+    requestAnimationFrame(() => panel.classList.add("is-changing"));
+    vibrate("light");
+  }
+
+  tabs.innerHTML = directions
+    .map(
+      (direction, index) =>
+        `<button class="direction-tab${index === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${index === 0}" data-direction="${index}">${direction.title}</button>`,
+    )
+    .join("");
+
+  tabs.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-direction]");
+    if (!button) return;
+    selectDirection(Number(button.dataset.direction));
+  });
+
+  selectDirection(0);
+}
+
+function renderCoaches() {
+  const name = document.getElementById("coachName");
+  const role = document.getElementById("coachRole");
+  const text = document.getElementById("coachText");
+  const image = document.getElementById("coachImage");
+  const card = document.querySelector(".coach-card");
+  let current = 0;
+
+  function selectCoach(index) {
+    current = (index + coaches.length) % coaches.length;
+    const coach = coaches[current];
+    name.textContent = coach.name;
+    role.textContent = coach.role;
+    text.textContent = coach.text;
+    image.src = "assets/demo-coach.svg";
+    card.classList.remove("is-changing");
+    requestAnimationFrame(() => card.classList.add("is-changing"));
+    vibrate("light");
+  }
+
+  document.querySelector("[data-coach-prev]").addEventListener("click", () => selectCoach(current - 1));
+  document.querySelector("[data-coach-next]").addEventListener("click", () => selectCoach(current + 1));
+  selectCoach(0);
+}
+
+function renderReviews() {
+  const text = document.getElementById("reviewText");
+  const name = document.getElementById("reviewName");
+  const rating = document.getElementById("reviewRating");
+  const dots = Array.from(document.querySelectorAll("[data-review]"));
+  const card = document.querySelector(".review-card");
+  let current = 0;
+  let timer = null;
+
+  function selectReview(index) {
+    current = (index + reviews.length) % reviews.length;
+    const review = reviews[current];
+    text.textContent = review.text;
+    name.textContent = review.name;
+    rating.textContent = review.rating;
+    dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === current));
+    card.classList.remove("is-changing");
+    requestAnimationFrame(() => card.classList.add("is-changing"));
+  }
+
+  function restartTimer() {
+    window.clearInterval(timer);
+    timer = window.setInterval(() => selectReview(current + 1), 5400);
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      selectReview(Number(dot.dataset.review));
+      restartTimer();
+      vibrate("light");
+    });
+  });
+
+  selectReview(0);
+  restartTimer();
+}
+
+function renderFaq() {
+  const list = document.querySelector(".faq-list");
+  list.innerHTML = faqItems
+    .map(
+      (item, index) => `
+        <article class="faq-item${index === 0 ? " open" : ""}">
+          <button class="faq-question" type="button" aria-expanded="${index === 0}">
+            <span>${item.question}</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 9 5 5 5-5 1.4 1.4L12 16.8 5.6 10.4 7 9Z" /></svg>
+          </button>
+          <div class="faq-answer"><p>${item.answer}</p></div>
+        </article>
+      `,
+    )
+    .join("");
+
+  function syncAnswerHeight(item) {
+    const answer = item.querySelector(".faq-answer");
+    answer.style.maxHeight = item.classList.contains("open") ? `${answer.scrollHeight}px` : "0px";
+  }
+
+  list.querySelectorAll(".faq-item").forEach((item) => {
+    const button = item.querySelector(".faq-question");
+    syncAnswerHeight(item);
+    button.addEventListener("click", () => {
+      item.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(item.classList.contains("open")));
+      syncAnswerHeight(item);
+      vibrate("light");
+    });
+  });
+}
+
+function initRevealAnimations() {
+  const revealItems = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.14 },
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
+function initStickyCta() {
+  const sticky = document.querySelector("[data-sticky]");
+  const hero = document.querySelector(".hero");
+  const update = () => {
+    sticky.classList.toggle("visible", window.scrollY > hero.offsetHeight * 0.42);
+  };
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+}
+
+function bindActions() {
+  document.querySelectorAll("[data-action='signup']").forEach((button) => {
+    button.addEventListener("click", handleSignup);
+  });
+
+  document.querySelectorAll("[data-link]").forEach((button) => {
+    button.addEventListener("click", () => {
+      vibrate("light");
+      openUrl(PUBLIC_LINKS[button.dataset.link]);
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  tg.expand();
+  tg.enableClosingConfirmation();
+  tg.setHeaderColor("#970d43");
+  tg.setBackgroundColor("#fffaf4");
+
+  renderDirections();
+  renderCoaches();
+  renderReviews();
+  renderFaq();
+  bindActions();
+  initRevealAnimations();
+  initStickyCta();
+});
+
+    </script>
   </head>
   <body>
     <main class="app-shell">
