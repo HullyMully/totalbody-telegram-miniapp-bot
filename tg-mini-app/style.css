@@ -5274,5 +5274,104 @@ html, body {
 .app .overlap,
 .app .overlap-group,
 .app .overlap-2 {
-  min-height: 6480px;
+  min-height: 6418px;
+}
+
+/* Final mobile polish: keep section titles and contact rows clear in Telegram. */
+.app .text-wrapper-16 {
+  top: 3596px;
+}
+
+.app .group-8 {
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.app .text-wrapper-17 {
+  top: 4866px;
+  left: 0;
+  width: 100%;
+}
+
+.app .overlap-5,
+.app .overlap-6,
+.app .overlap-7 {
+  left: 50%;
+  width: min(330px, calc(100vw - 52px));
+  height: 66px;
+  transform: translateX(-50%);
+  border-radius: 30px;
+}
+
+.app .overlap-5 {
+  top: 4928px;
+}
+
+.app .overlap-6 {
+  top: 5086px;
+}
+
+.app .overlap-7 {
+  top: 5236px;
+}
+
+.app .group-8 .vector-9 {
+  top: 16px;
+  left: 24px;
+}
+
+.app .text-wrapper-18,
+.app .text-wrapper-19,
+.app .text-wrapper-22 {
+  top: 14px;
+  left: 82px;
+  right: 22px;
+  max-width: none;
+  color: #8d1342;
+  font-size: 18px;
+  line-height: 1.12;
+  text-align: left;
+}
+
+.app .element-2,
+.app .element-3,
+.app .element-4 {
+  left: 50%;
+  width: min(312px, calc(100vw - 78px));
+  transform: translateX(-50%);
+  color: rgba(240, 230, 218, 0.92);
+  font-size: 17px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.app .element-2 {
+  top: 5006px;
+}
+
+.app .element-3 {
+  top: 5164px;
+}
+
+.app .element-4 {
+  top: 5314px;
+}
+
+.app .group-8 .text-wrapper-20 {
+  text-decoration: none;
+}
+
+.app .group-8 a {
+  text-decoration: none;
+}
+
+.app .group-8 .logos-telegram,
+.app .group-8 .logos-whatsapp-icon,
+.app .group-8 .logos-telegram-2,
+.app .group-8 .logos-whatsapp-icon-2,
+.app .group-8 .logos-telegram-3,
+.app .group-8 .logos-whatsapp-icon-3 {
+  display: none !important;
 }
