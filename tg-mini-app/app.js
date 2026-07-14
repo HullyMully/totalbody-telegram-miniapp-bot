@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tg.enableClosingConfirmation();
     
     // Получаем все элементы кнопок "Записаться" (контейнеры текста)
-    const signupButtons = document.querySelectorAll('.div-wrapper, .overlap-group-2, .program-card__button');
+    const signupButtons = document.querySelectorAll('.signup-button, .div-wrapper, .overlap-group-2, .program-card__button');
     
     // Добавляем обработчики для каждой кнопки
     signupButtons.forEach(button => {
@@ -567,11 +567,10 @@ document.addEventListener('DOMContentLoaded', () => {
     modalPricesBackdrop.addEventListener('click', closePricesModal);
 
     // Открытие по клику на кнопку "Наши цены"
-    document.querySelectorAll('.group-29, .text-wrapper-42').forEach(el => {
-        if (el.textContent.trim().toLowerCase().includes('наши цены')) {
-            el.addEventListener('click', () => openPricesModal(0));
-        }
-    });
+    const pricesCard = document.querySelector('.group-29');
+    if (pricesCard) {
+        pricesCard.addEventListener('click', () => openPricesModal(0));
+    }
 
     // --- Модальное окно Видео ---
     const modalVideo = document.querySelector('.modal-video');
@@ -1034,7 +1033,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Обработчик нажатия на кнопку "Записаться"
 function handleSignup(event) {
-    const button = event.target;
+    const button = event.currentTarget || event.target;
     let trainingType = 'Общая запись'; // Значение по умолчанию
 
     // Если кнопка имеет атрибут data-training-type, используем его значение
@@ -1077,7 +1076,7 @@ function handleSignup(event) {
 
 // Обработчик нажатия на социальные сети
 function handleSocialClick(event) {
-    const button = event.target;
+    const button = event.currentTarget || event.target;
     let url = '';
     
     // Проверяем все возможные классы для Telegram
